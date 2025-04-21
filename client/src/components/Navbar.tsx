@@ -47,7 +47,7 @@ const Navbar = () => {
           />
           <span>
             <h1 className="font-bold md:font-extrabold text-xl lg:text-2xl">
-              Assure Cargo Carriers
+              Assured Cargo Carriers
             </h1>
           </span>
         </Link>

@@ -56,8 +56,8 @@ export default function LorryHireVoucherEntryPage() {
               Lorry Hire Voucher Entry
             </CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-col gap-4 px-2 bg-white">
-            <div className="flex flex-wrap gap-4 justify-between rounded-md py-4 px-2">
+          <CardContent className="flex flex-col gap-4 p-2 bg-white rounded-3xl">
+            <div className="flex flex-wrap gap-4 justify-between py-4 px-2">
               <FormField
                 name="branch"
                 control={form.control}

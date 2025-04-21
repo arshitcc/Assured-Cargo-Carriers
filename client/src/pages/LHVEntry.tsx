@@ -3,7 +3,7 @@ import LorryHireVoucherEntryPage from "@/components/LorryHireVoucherEntryPage";
 function LHVEntry() {
  
   return (
-    <div className="px-2">
+    <div className="min-h-screen px-2">
       <LorryHireVoucherEntryPage />
     </div>
   );
