@@ -1,16 +1,18 @@
 import { useFormContext } from "react-hook-form";
 import { FormField, FormItem, FormLabel, FormControl } from "./ui/form";
 import { Input } from "./ui/input";
-import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
+import { Card, CardContent, CardHeader } from "./ui/card";
 
 export function LorryHirePaymentDetailsForm() {
   const { control } = useFormContext();
 
   return (
-    <div className="w-1/3 min-h-[85vh] overflow-auto">
-      <Card className="bg-black">
-        <CardHeader className="text-white font-semibold">Lorry Hire Payment Details</CardHeader>
-        <CardContent className="bg-white py-2">
+    <div className="w-full md:w-1/3">
+      <Card className="p-0 gap-0">
+        <CardHeader className="bg-red-400 text-white font-semibold rounded-t-xl py-2">
+          Lorry Hire Payment Details
+        </CardHeader>
+        <CardContent className="py-2 px-4 rounded-b-xl overflow-auto space-y-4">
           {[
             { name: "lhPaid", label: "LH Paid (+)" },
             { name: "dtnPaid", label: "DTN Paid (+)" },
@@ -28,17 +30,26 @@ export function LorryHirePaymentDetailsForm() {
               control={control}
               name={`lorryHirePayment.${name}`}
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{label}</FormLabel>
+                <FormItem className="flex gap-2">
+                  <FormLabel className="font-semibold w-1/3">{label}</FormLabel>
                   <FormControl>
-                    <Input type="number" {...field} />
+                    <Input
+                      className={`w-2/3 ${
+                        name === "totalAmt" || name === "vcrAmount"
+                          ? "bg-gray-300 font-bold"
+                          : ""
+                      }`}
+                      type="number"
+                      {...field}
+                      placeholder="0"
+                      readOnly={name === "totalAmt" || name === "vcrAmount"}
+                    />
                   </FormControl>
                 </FormItem>
               )}
             />
           ))}
         </CardContent>
-        <CardFooter></CardFooter>
       </Card>
     </div>
   );

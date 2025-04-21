@@ -48,9 +48,9 @@ export const paymentModeSchema = z.object({
 export const voucherEntrySchema = z.object({
   branch: z.string().nonempty(),
   voucherNo: z.string().optional(),
-  date: z.string(),
+  date: z.date(),
   type: z.string().nonempty(),
-  cbsDate: z.string().optional(),
+  cbsDate: z.date(),
   challanDetails: challanDetailsSchema,
   lorryHirePayment: lorryHirePaymentSchema,
   paymentMode: paymentModeSchema,
