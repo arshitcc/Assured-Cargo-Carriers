@@ -21,6 +21,11 @@ const Navbar = () => {
       slug: "/lhv-entry",
       active: true,
     },
+    {
+      name: "Add Consignment",
+      slug: "/add-consignment",
+      active: true,
+    }
   ];
 
   const navigate = useNavigate();

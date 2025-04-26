@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LHVEntry from './pages/LHVEntry.tsx';
+import AddConginment from './pages/AddConginment.tsx';
 
 const appRouter = createBrowserRouter([
   {
@@ -29,6 +30,12 @@ const appRouter = createBrowserRouter([
         element: (
           <LHVEntry/>
         ),
+      },
+      {
+        path: '/add-consignment',
+        element: (
+          <AddConginment/>
+        )
       },
     ]
   }

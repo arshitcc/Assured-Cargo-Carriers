@@ -1,0 +1,167 @@
+import { Card, CardContent, CardHeader } from "../ui/card";
+import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { useFormContext } from "react-hook-form";
+import { Input } from "../ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
+
+function InsuranceInformation() {
+  const { control } = useFormContext();
+  return (
+    <Card className="w-full p-0 gap-0 rounded-b-sm ">
+      <CardHeader className="p-3 bg-[#3279b7] text-white rounded-t-sm">
+        Insurance Information
+      </CardHeader>
+      <CardContent className="space-y-2 p-4">
+        <FormField
+          control={control}
+          name="insuranceInfo.insuranceNumber"
+          render={({ field }) => (
+            <FormItem className="flex gap-2">
+              <FormLabel className="font-semibold w-1/3">
+                Insurance Number
+              </FormLabel>
+              <FormControl>
+                <Input
+                  className="w-2/3"
+                  placeholder="Enter Insurance Number"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="insuranceInfo.insuranceDate"
+          render={({ field }) => (
+            <FormItem className="flex gap-2">
+              <FormLabel className="font-semibold w-1/3">
+                Insurance Date
+              </FormLabel>
+              <FormControl>
+                <Input
+                  className="w-2/3"
+                  placeholder="Enter Insurance Date"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="insuranceInfo.insuranceAmount"
+          render={({ field }) => (
+            <FormItem className="flex gap-2">
+              <FormLabel className="font-semibold w-1/3">
+                Insurance Amount
+              </FormLabel>
+              <FormControl>
+                <Input
+                  className="w-2/3"
+                  placeholder="Enter Insurance Amount"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="insuranceInfo.insuranceCompanyName"
+          render={({ field }) => (
+            <FormItem className="flex gap-2">
+              <FormLabel className="font-semibold w-1/3">
+                Insurance Company Name
+              </FormLabel>
+              <FormControl>
+                <Input
+                  className="w-2/3"
+                  placeholder="Enter Insurance Company Name"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="insuranceInfo.risk"
+          render={({ field }) => (
+            <FormItem className="flex gap-2">
+              <FormLabel className="font-semibold w-1/3">Risk</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue="Owner Risk">
+                <FormControl>
+                  <SelectTrigger className="w-2/3">
+                    <SelectValue placeholder="Select Branch" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem
+                      value="Owner Risk"
+                      className="hover:bg-gray-100"
+                    >
+                      Owner Risk
+                    </SelectItem>
+                    <SelectItem
+                      value="Company Risk"
+                      className="hover:bg-gray-100"
+                    >
+                      Company Risk
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="insuranceInfo.wayBillOrPermitNumber"
+          render={({ field }) => (
+            <FormItem className="flex gap-2">
+              <FormLabel className="font-semibold w-1/3">
+                WayBill / Permit Number
+              </FormLabel>
+              <FormControl>
+                <Input
+                  className="w-2/3"
+                  placeholder="Enter WayBill / Permit Number"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="insuranceInfo.wayBillOrPermitExpiryDate"
+          render={({ field }) => (
+            <FormItem className="flex gap-2">
+              <FormLabel className="font-semibold w-1/3">
+                WayBill / Permit Expiry Date
+              </FormLabel>
+              <FormControl>
+                <Input
+                  className="w-2/3"
+                  placeholder="Enter WayBill / Permit Expiry Date"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+      </CardContent>
+    </Card>
+  );
+}
+
+export default InsuranceInformation;
