@@ -5,6 +5,7 @@ import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LHVEntry from './pages/LHVEntry.tsx';
 import AddConginment from './pages/AddConginment.tsx';
+import EditChallan from './pages/EditChallan.tsx';
 
 const appRouter = createBrowserRouter([
   {
@@ -37,6 +38,12 @@ const appRouter = createBrowserRouter([
           <AddConginment/>
         )
       },
+      {
+        path : "/edit-challan",
+        element : (
+          <EditChallan/>
+        )
+      }
     ]
   }
 ])

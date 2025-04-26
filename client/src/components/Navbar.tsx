@@ -25,6 +25,11 @@ const Navbar = () => {
       name: "Add Consignment",
       slug: "/add-consignment",
       active: true,
+    },
+    {
+      name : "Edit Challan",
+      slug : "/edit-challan",
+      active: true
     }
   ];
 
