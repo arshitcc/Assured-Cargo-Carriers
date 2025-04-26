@@ -7,6 +7,7 @@ import LHVEntry from './pages/LHVEntry.tsx';
 import AddConginment from './pages/AddConginment.tsx';
 import EditChallan from './pages/EditChallan.tsx';
 import SearchChallans from './pages/SearchChallans.tsx';
+import TruckArrivalReport from './pages/TruckArrivalReport.tsx';
 
 const appRouter = createBrowserRouter([
   {
@@ -49,6 +50,12 @@ const appRouter = createBrowserRouter([
         path : "/search-challans",
         element : (
           <SearchChallans/>
+        )
+      },
+      {
+        path : "/truck-arrival-report",
+        element : (
+          <TruckArrivalReport/>
         )
       }
     ]
