@@ -30,6 +30,11 @@ const Navbar = () => {
       name : "Edit Challan",
       slug : "/edit-challan",
       active: true
+    },
+    {
+      name: "Search Challans",
+      slug: "/search-challans",
+      active: true
     }
   ];
 
