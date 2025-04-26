@@ -6,7 +6,7 @@ import { Input } from "../ui/input";
 function VehicleInformation() {
   const { control } = useFormContext();
   return (
-    <Card className="w-full p-0 gap-0 rounded-b-sm">
+    <Card className="col-span-3 md:col-span-1 w-full p-0 gap-0 rounded-b-sm">
       <CardHeader className="p-3 bg-[#3279b7] text-white rounded-t-sm">
         Vehichle Information
       </CardHeader>
@@ -15,13 +15,13 @@ function VehicleInformation() {
           control={control}
           name="vehicleInfo.vehicleNumber"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 Vehicle Number
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Enter Vehicle Number"
                   {...field}
                 />
@@ -33,10 +33,10 @@ function VehicleInformation() {
           control={control}
           name="vehicleInfo.from"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">From</FormLabel>
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">From</FormLabel>
               <FormControl>
-                <Input className="w-2/3" placeholder="Mumbai, Maharashtra, India" {...field} />
+                <Input className="w-full md:w-2/3" placeholder="Mumbai, Maharashtra, India" {...field} />
               </FormControl>
             </FormItem>
           )}
@@ -45,10 +45,10 @@ function VehicleInformation() {
           control={control}
           name="vehicleInfo.to"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">To</FormLabel>
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">To</FormLabel>
               <FormControl>
-                <Input className="w-2/3" placeholder="Varanasi, Uttar Pradesh, India" {...field} />
+                <Input className="w-full md:w-2/3" placeholder="Varanasi, Uttar Pradesh, India" {...field} />
               </FormControl>
             </FormItem>
           )}

@@ -14,22 +14,22 @@ import {
 function InsuranceInformation() {
   const { control } = useFormContext();
   return (
-    <Card className="w-full p-0 gap-0 rounded-b-sm ">
+    <Card className="col-span-3 md:col-span-2 w-full p-0 gap-0 rounded-b-sm ">
       <CardHeader className="p-3 bg-[#3279b7] text-white rounded-t-sm">
         Insurance Information
       </CardHeader>
-      <CardContent className="space-y-2 p-4">
+      <CardContent className="space-y-2 p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
         <FormField
           control={control}
           name="insuranceInfo.insuranceNumber"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 Insurance Number
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Enter Insurance Number"
                   {...field}
                 />
@@ -41,13 +41,13 @@ function InsuranceInformation() {
           control={control}
           name="insuranceInfo.insuranceDate"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 Insurance Date
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Enter Insurance Date"
                   {...field}
                 />
@@ -59,13 +59,13 @@ function InsuranceInformation() {
           control={control}
           name="insuranceInfo.insuranceAmount"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 Insurance Amount
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Enter Insurance Amount"
                   {...field}
                 />
@@ -77,13 +77,13 @@ function InsuranceInformation() {
           control={control}
           name="insuranceInfo.insuranceCompanyName"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 Insurance Company Name
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Enter Insurance Company Name"
                   {...field}
                 />
@@ -95,11 +95,11 @@ function InsuranceInformation() {
           control={control}
           name="insuranceInfo.risk"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">Risk</FormLabel>
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">Risk</FormLabel>
               <Select onValueChange={field.onChange} defaultValue="Owner Risk">
                 <FormControl>
-                  <SelectTrigger className="w-2/3">
+                  <SelectTrigger className="w-full md:w-2/3">
                     <SelectValue placeholder="Select Branch" />
                   </SelectTrigger>
                 </FormControl>
@@ -127,13 +127,13 @@ function InsuranceInformation() {
           control={control}
           name="insuranceInfo.wayBillOrPermitNumber"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="col-span-1 md:col-span-2 flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 WayBill / Permit Number
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Enter WayBill / Permit Number"
                   {...field}
                 />
@@ -145,13 +145,13 @@ function InsuranceInformation() {
           control={control}
           name="insuranceInfo.wayBillOrPermitExpiryDate"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="col-span-1 md:col-span-2 flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 WayBill / Permit Expiry Date
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Enter WayBill / Permit Expiry Date"
                   {...field}
                 />

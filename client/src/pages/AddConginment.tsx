@@ -18,6 +18,11 @@ const addConsignmentFormSchema = z.object({
   consignmentDate: z.any(),
   departureBranch: z.any(),
   scheduleDeliveryDate: z.any(),
+  transporterInfo : z.any(),
+  vehicleInfo : z.any(),
+  freightInfo : z.any(),
+  insuranceInfo : z.any(),
+  additionalInfo : z.any(),
 });
 
 type AddConsignmentForm = z.infer<typeof addConsignmentFormSchema>;
@@ -32,6 +37,33 @@ function AddConginment() {
       consignmentDate: new Date(),
       departureBranch: "",
       scheduleDeliveryDate: new Date(),
+      transporterInfo : {
+        transporterName: "",
+        transporterCode : "",
+        transporterAddress: "",
+      },
+      vehicleInfo:  {
+        vehicleNumber: "",
+        from: "",
+        to: "",
+      },
+      freightInfo : {
+        totalFreight : "",
+        advance : "",
+        balance : "",
+      },
+      insuranceInfo : {
+        insuranceNumber : "",
+        insuranceDate : "",
+        insuranceAmount : "",
+        insuranceCompanyName : "",
+        risk : "",
+        wayBillOrPermitNumber : "",
+        wayBillOrPermitExpiryDate : "",
+      },
+      additionalInfo : {
+        remarks : ""
+      }
     },
   });
 
@@ -59,16 +91,13 @@ function AddConginment() {
         >
           <FormProvider {...addConsignmentForm}>
             <AddConsignmentHeader />
-            <div className="flex gap-4">
-              <div className="w-1/2 space-y-2">
+            <div className="grid grid-cols-3 gap-4 p-2">
                 <TransporterInformation />
                 <VehicleInformation />
                 <FreightInformation />
-              </div>
-              <div className="w-1/2 space-y-2 flex flex-col">
                 <InsuranceInformation />
                 <Remarks />
-                <div className="h-full flex justify-end items-center">
+                <div className="col-span-3 h-full flex justify-end items-center">
                   <Button
                     type="submit"
                     disabled={saving}
@@ -82,7 +111,6 @@ function AddConginment() {
                     Save and Exit
                   </Button>
                 </div>
-              </div>
             </div>
           </FormProvider>
         </form>
