@@ -13,7 +13,7 @@ const appRouter = createBrowserRouter([
     ),
     children: [
       {
-        path: '/',
+        path: '/home',
         element: (
           <div className='bg-green-200 h-[calc(100vh-64px)] font-semibold'>Home</div>
         ),

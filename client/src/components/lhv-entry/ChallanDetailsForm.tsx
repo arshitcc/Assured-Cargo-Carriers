@@ -1,5 +1,5 @@
-import { FormField, FormItem, FormLabel, FormControl } from "./ui/form";
-import { Input } from "./ui/input";
+import { FormField, FormItem, FormLabel, FormControl } from "../ui/form";
+import { Input } from "../ui/input";
 import { useFormContext } from "react-hook-form";
 import {
   Select,
@@ -7,8 +7,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
-import { Card, CardContent, CardHeader } from "./ui/card";
+} from "../ui/select";
+import { Card, CardContent, CardHeader } from "../ui/card";
 
 export function ChallanDetailsForm() {
   const { control } = useFormContext();
@@ -16,7 +16,7 @@ export function ChallanDetailsForm() {
   return (
     <div className="w-full md:w-1/3">
       <Card className="max-h-[80vh] p-0 gap-0">
-        <CardHeader className="bg-red-400 text-white font-semibold rounded-t-xl py-2">
+        <CardHeader className="bg-[#3279b7] text-white font-semibold rounded-t-xl py-2">
           Challan Details
         </CardHeader>
         <CardContent className="py-2 px-4 max-h-[60vh] overflow-auto space-y-4">
@@ -25,7 +25,9 @@ export function ChallanDetailsForm() {
             name="challanDetails.challanNo"
             render={({ field }) => (
               <FormItem className="flex gap-2">
-                <FormLabel className="font-semibold w-1/3">Challan No</FormLabel>
+                <FormLabel className="font-semibold w-1/3">
+                  Challan No
+                </FormLabel>
                 <FormControl>
                   <Input className="w-2/3" {...field} />
                 </FormControl>
@@ -90,7 +92,9 @@ export function ChallanDetailsForm() {
             name="challanDetails.challanType"
             render={({ field }) => (
               <FormItem className="flex gap-4 my-4">
-                <FormLabel className="font-semibold w-1/3">Challan Type</FormLabel>
+                <FormLabel className="font-semibold w-1/3">
+                  Challan Type
+                </FormLabel>
                 <FormControl>
                   <Select
                     onValueChange={field.onChange}

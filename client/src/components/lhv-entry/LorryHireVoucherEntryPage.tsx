@@ -1,15 +1,22 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { voucherEntrySchema, VoucherEntry } from "../schemas/forms";
-import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
-import { Form, FormField, FormItem, FormLabel, FormControl } from "./ui/form";
-import { Button } from "./ui/button";
-import { ChallanDetailsForm } from "../components/ChallanDetailsForm";
-import { LorryHirePaymentDetailsForm } from "../components/LorryHirePaymentDetailsForm";
-import { PaymentModeForm } from "../components/PaymentModeForm";
-import { Select, SelectItem, SelectContent, SelectGroup, SelectTrigger, SelectValue } from "./ui/select";
-import { Calendar } from "./ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { voucherEntrySchema, VoucherEntry } from "../../schemas/forms";
+import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
+import { Form, FormField, FormItem, FormLabel, FormControl } from "../ui/form";
+import { Button } from "../ui/button";
+import { ChallanDetailsForm } from "./ChallanDetailsForm";
+import { LorryHirePaymentDetailsForm } from "./LorryHirePaymentDetailsForm";
+import { PaymentModeForm } from "./PaymentModeForm";
+import {
+  Select,
+  SelectItem,
+  SelectContent,
+  SelectGroup,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
+import { Calendar } from "../ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
@@ -52,7 +59,7 @@ export default function LorryHireVoucherEntryPage() {
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <Card className="p-0 gap-0">
           <CardHeader className="p-0">
-            <CardTitle className="bg-[#e43636] text-white text-2xl p-4 rounded-t-xl">
+            <CardTitle className="bg-[#3279b7] text-white text-2xl p-4 rounded-t-xl">
               Lorry Hire Voucher Entry
             </CardTitle>
           </CardHeader>
@@ -69,19 +76,24 @@ export default function LorryHireVoucherEntryPage() {
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger className="w-[180px]">
+                        <SelectTrigger className="w-2/3">
                           <SelectValue placeholder="Select Branch" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                      <SelectGroup>
-                        
-                        <SelectItem value="Pune" className="hover:bg-gray-100">
-                          Pune
-                        </SelectItem>
-                        <SelectItem value="Surat" className="hover:bg-gray-100">
-                          Surat
-                        </SelectItem>
+                        <SelectGroup>
+                          <SelectItem
+                            value="Pune"
+                            className="hover:bg-gray-100"
+                          >
+                            Pune
+                          </SelectItem>
+                          <SelectItem
+                            value="Surat"
+                            className="hover:bg-gray-100"
+                          >
+                            Surat
+                          </SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
@@ -95,7 +107,7 @@ export default function LorryHireVoucherEntryPage() {
                   <FormItem className="flex gap-2">
                     <FormLabel className="font-semibold">Voucher No.</FormLabel>
                     <Select {...field} disabled>
-                      <SelectTrigger className="w-[180px]">
+                      <SelectTrigger className="w-2/3">
                         <SelectValue placeholder="Select Branch" />
                       </SelectTrigger>
                       <SelectContent>
@@ -157,13 +169,26 @@ export default function LorryHireVoucherEntryPage() {
                   <FormItem className="flex gap-2">
                     <FormLabel className="font-semibold">Type</FormLabel>
                     <FormControl>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="Select Payment Type" />
-                          </SelectTrigger>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <SelectTrigger className="w-2/3">
+                          <SelectValue placeholder="Select Payment Type" />
+                        </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="Part" className="hover:bg-gray-100">Part</SelectItem>
-                          <SelectItem value="Full" className="hover:bg-gray-100">Full</SelectItem>
+                          <SelectItem
+                            value="Part"
+                            className="hover:bg-gray-100"
+                          >
+                            Part
+                          </SelectItem>
+                          <SelectItem
+                            value="Full"
+                            className="hover:bg-gray-100"
+                          >
+                            Full
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </FormControl>

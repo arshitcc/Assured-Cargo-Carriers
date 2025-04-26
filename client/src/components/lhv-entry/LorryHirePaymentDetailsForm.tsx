@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
-import { FormField, FormItem, FormLabel, FormControl } from "./ui/form";
-import { Input } from "./ui/input";
-import { Card, CardContent, CardHeader } from "./ui/card";
+import { FormField, FormItem, FormLabel, FormControl } from "../ui/form";
+import { Input } from "../ui/input";
+import { Card, CardContent, CardHeader } from "../ui/card";
 
 export function LorryHirePaymentDetailsForm() {
   const { control } = useFormContext();
@@ -9,7 +9,7 @@ export function LorryHirePaymentDetailsForm() {
   return (
     <div className="w-full md:w-1/3">
       <Card className="p-0 gap-0">
-        <CardHeader className="bg-red-400 text-white font-semibold rounded-t-xl py-2">
+        <CardHeader className="bg-[#3279b7] text-white font-semibold rounded-t-xl py-2">
           Lorry Hire Payment Details
         </CardHeader>
         <CardContent className="py-2 px-4 rounded-b-xl overflow-auto space-y-4">

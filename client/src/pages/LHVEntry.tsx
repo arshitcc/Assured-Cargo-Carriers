@@ -1,4 +1,4 @@
-import LorryHireVoucherEntryPage from "@/components/LorryHireVoucherEntryPage";
+import LorryHireVoucherEntryPage from "@/components/lhv-entry/LorryHireVoucherEntryPage";
 
 function LHVEntry() {
  
