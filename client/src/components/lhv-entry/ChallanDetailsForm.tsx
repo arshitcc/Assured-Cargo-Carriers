@@ -16,7 +16,7 @@ export function ChallanDetailsForm() {
   return (
     <div className="w-full md:w-1/3">
       <Card className="max-h-[80vh] p-0 gap-0">
-        <CardHeader className="bg-[#3279b7] text-white font-semibold rounded-t-xl py-2">
+        <CardHeader className="font-semibold bg-[#3279b7] text-white rounded-t-xl py-2">
           Challan Details
         </CardHeader>
         <CardContent className="py-2 px-4 max-h-[60vh] overflow-auto space-y-4">
@@ -24,12 +24,12 @@ export function ChallanDetailsForm() {
             control={control}
             name="challanDetails.challanNo"
             render={({ field }) => (
-              <FormItem className="flex gap-2">
-                <FormLabel className="font-semibold w-1/3">
+              <FormItem className="flex flex-col md:flex-row gap-2">
+                <FormLabel className="font-semibold w-full md:w-1/3">
                   Challan No
                 </FormLabel>
                 <FormControl>
-                  <Input className="w-2/3" {...field} />
+                  <Input className="w-full md:w-2/3" {...field} />
                 </FormControl>
               </FormItem>
             )}
@@ -39,10 +39,10 @@ export function ChallanDetailsForm() {
             control={control}
             name="challanDetails.date"
             render={({ field }) => (
-              <FormItem className="flex gap-2">
-                <FormLabel className="font-semibold w-1/3">Date</FormLabel>
+              <FormItem className="flex flex-col md:flex-row gap-2">
+                <FormLabel className="font-semibold w-full md:w-1/3">Date</FormLabel>
                 <FormControl>
-                  <Input className="w-2/3" type="date" {...field} />
+                  <Input className="w-full md:w-2/3" type="date" {...field} />
                 </FormControl>
               </FormItem>
             )}
@@ -52,10 +52,10 @@ export function ChallanDetailsForm() {
             control={control}
             name="challanDetails.from"
             render={({ field }) => (
-              <FormItem className="flex gap-2">
-                <FormLabel className="font-semibold w-1/3">From</FormLabel>
+              <FormItem className="flex flex-col md:flex-row gap-2">
+                <FormLabel className="font-semibold w-full md:w-1/3">From</FormLabel>
                 <FormControl>
-                  <Input className="w-2/3" {...field} />
+                  <Input className="w-full md:w-2/3" {...field} />
                 </FormControl>
               </FormItem>
             )}
@@ -65,10 +65,10 @@ export function ChallanDetailsForm() {
             control={control}
             name="challanDetails.to"
             render={({ field }) => (
-              <FormItem className="flex gap-2">
-                <FormLabel className="font-semibold w-1/3">To</FormLabel>
+              <FormItem className="flex flex-col md:flex-row gap-2">
+                <FormLabel className="font-semibold w-full md:w-1/3">To</FormLabel>
                 <FormControl>
-                  <Input className="w-2/3" {...field} />
+                  <Input className="w-full md:w-2/3" {...field} />
                 </FormControl>
               </FormItem>
             )}
@@ -78,10 +78,10 @@ export function ChallanDetailsForm() {
             control={control}
             name="challanDetails.branch"
             render={({ field }) => (
-              <FormItem className="flex gap-2">
-                <FormLabel className="font-semibold w-1/3">Branch</FormLabel>
+              <FormItem className="flex flex-col md:flex-row gap-2">
+                <FormLabel className="font-semibold w-full md:w-1/3">Branch</FormLabel>
                 <FormControl>
-                  <Input className="w-2/3" {...field} />
+                  <Input className="w-full md:w-2/3" {...field} />
                 </FormControl>
               </FormItem>
             )}
@@ -91,8 +91,8 @@ export function ChallanDetailsForm() {
             control={control}
             name="challanDetails.challanType"
             render={({ field }) => (
-              <FormItem className="flex gap-4 my-4">
-                <FormLabel className="font-semibold w-1/3">
+              <FormItem className="flex flex-col md:flex-row gap-4 my-4">
+                <FormLabel className="font-semibold w-full md:w-1/3">
                   Challan Type
                 </FormLabel>
                 <FormControl>
@@ -100,7 +100,7 @@ export function ChallanDetailsForm() {
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
-                    <SelectTrigger className="w-2/3">
+                    <SelectTrigger className="w-full md:w-2/3">
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
                     <SelectContent>
@@ -126,10 +126,10 @@ export function ChallanDetailsForm() {
               control={control}
               name={`challanDetails.${name}`}
               render={({ field }) => (
-                <FormItem className="flex gap-2">
-                  <FormLabel className="font-semibold w-1/3">{label}</FormLabel>
+                <FormItem className="flex flex-col md:flex-row gap-2">
+                  <FormLabel className="font-semibold w-full md:w-1/3">{label}</FormLabel>
                   <FormControl>
-                    <Input className="w-2/3" type="number" {...field} />
+                    <Input className="w-full md:w-2/3" type="number" {...field} />
                   </FormControl>
                 </FormItem>
               )}
@@ -150,10 +150,10 @@ export function ChallanDetailsForm() {
               control={control}
               name={`challanDetails.${name}`}
               render={({ field }) => (
-                <FormItem className="flex gap-2">
-                  <FormLabel className="font-semibold w-1/3">{label}</FormLabel>
+                <FormItem className="flex flex-col md:flex-row gap-2">
+                  <FormLabel className="font-semibold w-full md:w-1/3">{label}</FormLabel>
                   <FormControl>
-                    <Input className="w-2/3" {...field} />
+                    <Input className="w-full md:w-2/3" {...field} />
                   </FormControl>
                 </FormItem>
               )}

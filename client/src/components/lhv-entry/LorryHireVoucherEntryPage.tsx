@@ -58,25 +58,25 @@ export default function LorryHireVoucherEntryPage() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <Card className="p-0 gap-0">
-          <CardHeader className="p-0">
+          <CardHeader className="font-semibold p-0">
             <CardTitle className="bg-[#3279b7] text-white text-2xl p-4 rounded-t-xl">
               Lorry Hire Voucher Entry
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-4 p-2 bg-white rounded-3xl">
-            <div className="flex flex-wrap gap-4 justify-between py-4 px-2">
+            <div className="flex flex-col md:flex-row md:flex-wrap md:justify-center gap-4 justify-between py-4 px-2">
               <FormField
                 name="branch"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem className="flex gap-2">
-                    <FormLabel className="font-semibold">Branch</FormLabel>
+                  <FormItem className="flex flex-col md:flex-row gap-2">
+                    <FormLabel className="font-semibold w-full md:w-1/3">Branch</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
                       <FormControl>
-                        <SelectTrigger className="w-2/3">
+                        <SelectTrigger className="w-full md:w-2/3">
                           <SelectValue placeholder="Select Branch" />
                         </SelectTrigger>
                       </FormControl>
@@ -104,10 +104,10 @@ export default function LorryHireVoucherEntryPage() {
                 name="voucherNo"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem className="flex gap-2">
+                  <FormItem className="flex flex-col md:flex-row gap-2">
                     <FormLabel className="font-semibold">Voucher No.</FormLabel>
                     <Select {...field} disabled>
-                      <SelectTrigger className="w-2/3">
+                      <SelectTrigger className="w-full md:w-2/3">
                         <SelectValue placeholder="Select Branch" />
                       </SelectTrigger>
                       <SelectContent>
@@ -126,7 +126,7 @@ export default function LorryHireVoucherEntryPage() {
                 name="cbsDate"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem className="flex gap-2">
+                  <FormItem className="flex flex-col md:flex-row gap-2">
                     <FormLabel className="font-semibold">Date</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
@@ -134,7 +134,7 @@ export default function LorryHireVoucherEntryPage() {
                           <Button
                             variant={"outline"}
                             className={cn(
-                              "w-[240px] pl-3 text-left font-normal",
+                              "pl-3 text-left font-normal",
                               !field.value && "text-muted-foreground"
                             )}
                           >
@@ -166,14 +166,14 @@ export default function LorryHireVoucherEntryPage() {
                 name="type"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem className="flex gap-2">
+                  <FormItem className="flex flex-col md:flex-row gap-2">
                     <FormLabel className="font-semibold">Type</FormLabel>
                     <FormControl>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                       >
-                        <SelectTrigger className="w-2/3">
+                        <SelectTrigger className="w-full md:w-2/3">
                           <SelectValue placeholder="Select Payment Type" />
                         </SelectTrigger>
                         <SelectContent>
@@ -199,7 +199,7 @@ export default function LorryHireVoucherEntryPage() {
                 name="date"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem className="flex gap-2">
+                  <FormItem className="flex flex-col md:flex-row gap-2">
                     <FormLabel className="font-semibold">CBS Date</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
@@ -207,7 +207,7 @@ export default function LorryHireVoucherEntryPage() {
                           <Button
                             variant={"outline"}
                             className={cn(
-                              "w-[240px] pl-3 text-left font-normal",
+                              "pl-3 text-left font-normal",
                               !field.value && "text-muted-foreground"
                             )}
                           >

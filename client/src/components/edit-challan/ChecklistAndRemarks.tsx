@@ -7,8 +7,8 @@ import { Checkbox } from "../ui/checkbox";
 function ChecklistAndRemarks() {
   const { control } = useFormContext();
   return (
-    <Card className="w-full p-0 gap-0 rounded-b-sm">
-      <CardHeader className="p-3 bg-[#3279b7] text-white rounded-t-sm">
+    <Card className="w-full col-span-3 md:col-span-1 p-0 gap-0 rounded-b-xs">
+      <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
         Checklist and Loading Remarks
       </CardHeader>
       <CardContent className="space-y-4 p-4">
@@ -24,7 +24,7 @@ function ChecklistAndRemarks() {
                 />
               </FormControl>
               <div className="space-y-1 leading-none">
-                <FormLabel>
+                <FormLabel className="text-xs md:text-sm">
                   Is Driving License of Driver Scanned and Verified ?
                 </FormLabel>
               </div>
@@ -43,7 +43,7 @@ function ChecklistAndRemarks() {
                 />
               </FormControl>
               <div className="space-y-1 leading-none">
-                <FormLabel>
+                <FormLabel className="text-xs md:text-sm">
                   Is PAN of Lorry Owner Scanned and Verified ?
                 </FormLabel>
               </div>
@@ -62,7 +62,9 @@ function ChecklistAndRemarks() {
                 />
               </FormControl>
               <div className="space-y-1 leading-none">
-                <FormLabel>Is RC of Vehicle Scanned and Verified ?</FormLabel>
+                <FormLabel className="text-xs md:text-sm">
+                  Is RC of Vehicle Scanned and Verified ?
+                </FormLabel>
               </div>
             </FormItem>
           )}
@@ -72,13 +74,13 @@ function ChecklistAndRemarks() {
           control={control}
           name="checklistAndRemarks.loadingRemarks"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 Loading Remarks
               </FormLabel>
               <FormControl>
                 <Textarea
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Loading Remarks"
                   {...field}
                 />

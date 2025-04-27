@@ -17,7 +17,7 @@ export function PaymentModeForm() {
   return (
     <div className="w-full md:w-1/3">
       <Card className=" p-0 gap-0">
-        <CardHeader className="bg-[#3279b7] text-white font-semibold rounded-t-xl py-2">
+        <CardHeader className="font-semibold bg-[#3279b7] text-white rounded-t-xl py-2">
           Payment Mode{" "}
         </CardHeader>
         <CardContent className="bg-white py-2 px-4 rounded-b-xl overflow-auto space-y-4">
@@ -25,13 +25,13 @@ export function PaymentModeForm() {
             control={control}
             name="paymentMode.mode"
             render={({ field }) => (
-              <FormItem className="flex gap-4 my-4">
-                <FormLabel className="font-semibold w-1/3">
+              <FormItem className="flex flex-col md:flex-row gap-4 my-4">
+                <FormLabel className="font-semibold w-full md:w-1/3">
                   Mode (Pay)
                 </FormLabel>
                 <FormControl>
                   <Select {...field}>
-                    <SelectTrigger className="w-2/3">
+                    <SelectTrigger className="w-full md:w-2/3">
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
                     <SelectContent>
@@ -187,14 +187,14 @@ export function PaymentModeForm() {
               control={control}
               name={`paymentMode.${name}`}
               render={({ field }) => (
-                <FormItem className="flex gap-2">
-                  <FormLabel className="font-semibold w-1/3">{label}</FormLabel>
+                <FormItem className="flex flex-col md:flex-row gap-2">
+                  <FormLabel className="font-semibold w-full md:w-1/3">{label}</FormLabel>
                   <FormControl>
                     <Input
                       {...(name.includes("Amt") ? { type: "number" } : {})}
                       {...field}
                       placeholder={label}
-                      className="w-2/3"
+                      className="w-full md:w-2/3"
                     />
                   </FormControl>
                 </FormItem>
@@ -206,14 +206,14 @@ export function PaymentModeForm() {
             control={control}
             name="paymentMode.remarks"
             render={({ field }) => (
-              <FormItem className="col-span-full flex gap-4">
-                <FormLabel className="font-semibold w-1/3 items-start">
+              <FormItem className="col-span-full flex flex-col md:flex-row gap-4">
+                <FormLabel className="font-semibold w-full md:w-1/3 items-start">
                   Remarks
                 </FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="Remarks"
-                    className="w-2/3"
+                    className="w-full md:w-2/3"
                     rows={3}
                     {...field}
                   />

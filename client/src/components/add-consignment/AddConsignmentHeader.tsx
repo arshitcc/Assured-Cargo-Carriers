@@ -22,7 +22,7 @@ function AddConsignmentHeader() {
 
   return (
     <Card className="p-0 gap-0 rounded-b-sm">
-      <CardHeader className="p-3 bg-[#3279b7] text-white rounded-t-sm">
+      <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
         Add Consignment
       </CardHeader>
       <CardContent className="p-3 flex flex-col md:flex-row gap-2 justify-around">
@@ -31,7 +31,9 @@ function AddConsignmentHeader() {
           control={control}
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
-              <FormLabel className="font-semibold w-full md:w-1/3">BrCd</FormLabel>
+              <FormLabel className="font-semibold w-full md:w-1/3">
+                BrCd
+              </FormLabel>
               <Select onValueChange={field.onChange} defaultValue="Pune">
                 <FormControl>
                   <SelectTrigger className="w-full md:w-2/3">
@@ -95,7 +97,10 @@ function AddConsignmentHeader() {
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
-                  <PopoverContent className="w-full md:w-auto p-0" align="start">
+                  <PopoverContent
+                    className="w-full md:w-auto p-0"
+                    align="start"
+                  >
                     <Calendar
                       mode="single"
                       selected={field.value}
@@ -141,42 +146,52 @@ function AddConsignmentHeader() {
         <FormField
           name="scheduleDeliveryDate"
           control={control}
-          render={({ field }) => (
-            <FormItem className="flex flex-col md:flex-row gap-2">
-              <FormLabel className="font-semibold">SchDel</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-full md:w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP")
-                      ) : (
-                        <span>Pick a date</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-full md:w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-full md:w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={field.value}
-                    onSelect={field.onChange}
-                    disabled={(date) =>
-                      date < new Date() || date < new Date("1900-01-01")
-                    }
-                    initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
-            </FormItem>
-          )}
+          render={({ field }) => {
+            const [open, setOpen] = useState(false);
+            return (
+              <FormItem className="flex flex-col md:flex-row gap-2">
+                <FormLabel className="font-semibold">SchDel</FormLabel>
+                <Popover open={open} onOpenChange={setOpen}>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "w-full md:w-[240px] pl-3 text-left font-normal",
+                          !field.value && "text-muted-foreground"
+                        )}
+                        onClick={() => setOpen((prev) => !prev)}
+                      >
+                        {field.value ? (
+                          format(field.value, "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-full md:w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    className="w-full md:w-auto p-0"
+                    align="start"
+                  >
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={(date) => {
+                        field.onChange(date);
+                        setOpen(false);
+                      }}
+                      disabled={(date) =>
+                        date < new Date() || date < new Date("1900-01-01")
+                      }
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+              </FormItem>
+            );
+          }}
         />
       </CardContent>
     </Card>

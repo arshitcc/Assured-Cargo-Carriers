@@ -10,22 +10,7 @@ import { Loader, SaveIcon } from "lucide-react";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Form } from "@/components/ui/form";
-import { z } from "zod";
-
-const addConsignmentFormSchema = z.object({
-  branch: z.any(),
-  consignmentNo: z.any(),
-  consignmentDate: z.any(),
-  departureBranch: z.any(),
-  scheduleDeliveryDate: z.any(),
-  transporterInfo : z.any(),
-  vehicleInfo : z.any(),
-  freightInfo : z.any(),
-  insuranceInfo : z.any(),
-  additionalInfo : z.any(),
-});
-
-type AddConsignmentForm = z.infer<typeof addConsignmentFormSchema>;
+import { addConsignmentFormSchema, AddConsignmentForm } from "@/schemas/add-consignment.schema";
 
 function AddConginment() {
   const [saving, setSaving] = useState(false);

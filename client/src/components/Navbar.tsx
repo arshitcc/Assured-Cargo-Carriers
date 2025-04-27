@@ -1,21 +1,22 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import { Loader2, MenuIcon, SettingsIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "./ui/navigation-menu";
+import React from "react";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
- 
-  const navItems = [
-    {
-      name: "Home",
-      slug: "/home",
-      active: true,
-    },
-    {
-      name: "About",
-      slug: "/about",
-      active: true,
-    },
+
+  const operations = [
     {
       name: "LHV Entry",
       slug: "/lhv-entry",
@@ -27,15 +28,15 @@ const Navbar = () => {
       active: true,
     },
     {
-      name : "Edit Challan",
-      slug : "/edit-challan",
-      active: true
+      name: "Edit Challan",
+      slug: "/edit-challan",
+      active: true,
     },
     {
       name: "Search Challans",
       slug: "/search-challans",
-      active: true
-    }
+      active: true,
+    },
   ];
 
   const navigate = useNavigate();
@@ -66,20 +67,40 @@ const Navbar = () => {
             </h1>
           </span>
         </Link>
-        <div className="flex items-center gap-6">
-          <div className="hidden lg:flex items-center gap-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                className="hover:underline underline-offset-4"
-                to={item.slug}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
+        <div className="hidden md:flex items-center gap-6">
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <Link to={"/home"} className={navigationMenuTriggerStyle()}>
+                  Home
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to={"/about"} className={navigationMenuTriggerStyle()}>
+                  About
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>
+                  <SettingsIcon className="w-5 h-5 mr-2" /> Opeartions
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="flex flex-col w-[150px]">
+                    {operations.map((operation) => (
+                      <Link
+                        key={operation.name}
+                        to={operation.slug}
+                        className={navigationMenuTriggerStyle()}
+                      >
+                        {operation.name}
+                      </Link>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
           <div className="flex items-center gap-4">
-            
             <div className="hidden sm:flex items-center gap-6">
               {isLoading ? (
                 <Button>
@@ -99,9 +120,35 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+        <div className="flex md:hidden">
+          <MenuIcon/>
+        </div>
       </div>
     </div>
   );
 };
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
 
 export default Navbar;

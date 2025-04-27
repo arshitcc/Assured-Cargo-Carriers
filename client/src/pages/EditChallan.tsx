@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { Form } from "@/components/ui/form";
-import { z } from "zod";
 import ChallanInformation from "@/components/edit-challan/ChallanInformation";
 import VehicleInformation from "@/components/edit-challan/VehicleInformation";
 import { Button } from "@/components/ui/button";
@@ -12,21 +11,7 @@ import { Loader, SaveIcon } from "lucide-react";
 import VehicleOwnerAndDriverInformation from "@/components/edit-challan/VehicleOwnerAndDriverInformation";
 import LorryHireInformation from "@/components/edit-challan/LorryHireInformation";
 import ChecklistAndRemarks from "@/components/edit-challan/ChecklistAndRemarks";
-
-const editChallanFormSchema = z.object({
-  branch: z.any(),
-  challanNo: z.any(),
-  challanDate: z.any(),
-  type: z.any(),
-  scheduledDate: z.any(),
-  challanInfo: z.any(),
-  vehicleInfo : z.any(),
-  vehicleOwnerDriverInfo : z.any(),
-  lorryHireInfo : z.any(),
-  checklistAndRemarks : z.any(),
-});
-
-type EditChallanForm = z.infer<typeof editChallanFormSchema>;
+import { EditChallanForm, editChallanFormSchema } from "@/schemas/edit-challan.schema";
 
 const EditChallan = () => {
   const [editing, setEditing] = useState(false);
@@ -66,12 +51,12 @@ const EditChallan = () => {
         driverAddress : "",
       },
       lorryHireInfo : {
-        chargedWeight : "",
-        lorryHire : "",
-        extraHeightCharges : "",
-        extraLengthCharges : "",
-        detentionCharges : "",
-        extraCharges : "",
+        chargedWeight : "0",
+        lorryHire : "0",
+        extraHeightCharges : "0",
+        extraLengthCharges : "0",
+        detentionCharges : "0",
+        extraCharges : "0",
         totalLorryHire : "",
         advanceLorryHire : "",
         balanceLorryHire : "",
@@ -102,7 +87,7 @@ const EditChallan = () => {
   
   return (
     <div>
-      <div className="min-h-screen px-2">
+      <div className="min-h-screen p-2">
         <Form {...editChallanForm}>
           <form
             className="space-y-4"
@@ -110,11 +95,11 @@ const EditChallan = () => {
           >
             <FormProvider {...editChallanForm}>
               <EditChallanHeader />
-              <div className="flex gap-4">
-                <ChallanInformation />
+              <div className="grid grid-cols-3 gap-4">
                 <VehicleInformation />
                 <VehicleOwnerAndDriverInformation/>
                 <LorryHireInformation/>
+                <ChallanInformation />
                 <ChecklistAndRemarks/>
               </div>
             </FormProvider>

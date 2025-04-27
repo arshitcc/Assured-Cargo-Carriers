@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
@@ -11,9 +11,12 @@ import { Calendar } from "../ui/calendar";
 function TARInformation() {
   const { control } = useFormContext();
 
+  const arrivalDate = useWatch({ control, name : "tarInfo.arrivalDate"});
+  const unloadingDate = useWatch({ control, name : "tarInfo.unloadingDate"});
+
   return (
-    <Card className="w-full p-0 gap-0 rounded-b-sm">
-      <CardHeader className="p-3 bg-[#3279b7] text-white rounded-t-sm">
+    <Card className="row-auto col-span-1 w-full p-0 gap-0 rounded-b-sm">
+      <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
         TAR Information
       </CardHeader>
       <CardContent className="space-y-4 p-4">
@@ -21,15 +24,15 @@ function TARInformation() {
           name="tarInfo.tarDate"
           control={control}
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/2">TAR Date</FormLabel>
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/2">TAR Date</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
                       variant={"outline"}
                       className={cn(
-                        "w-2/3 pl-3 text-left font-normal",
+                        "w-full md:w-2/3 pl-3 text-left font-normal",
                         !field.value && "text-muted-foreground"
                       )}
                     >
@@ -48,7 +51,7 @@ function TARInformation() {
                     selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) =>
-                      date < new Date() || date > new Date("1900-01-01")
+                      date > new Date() || date < new Date("1900-01-01")
                     }
                     initialFocus
                   />
@@ -61,15 +64,15 @@ function TARInformation() {
           name="tarInfo.arrivalDate"
           control={control}
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">Arrival Date</FormLabel>
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3"> Arrival Date </FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
                       variant={"outline"}
                       className={cn(
-                        "w-2/3 pl-3 text-left font-normal",
+                        "w-full md:w-2/3 pl-3 text-left font-normal",
                         !field.value && "text-muted-foreground"
                       )}
                     >
@@ -88,7 +91,7 @@ function TARInformation() {
                     selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) =>
-                      date < new Date() || date > new Date("1900-01-01")
+                      date > new Date() || date < new Date("1900-01-01") || date > unloadingDate
                     }
                     initialFocus
                   />
@@ -101,15 +104,15 @@ function TARInformation() {
           name="tarInfo.unloadingDate"
           control={control}
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">Unloading Date</FormLabel>
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3"> Unloading Date </FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
                       variant={"outline"}
                       className={cn(
-                        "w-2/3 pl-3 text-left font-normal",
+                        "w-full md:w-2/3 pl-3 text-left font-normal",
                         !field.value && "text-muted-foreground"
                       )}
                     >
@@ -128,7 +131,7 @@ function TARInformation() {
                     selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) =>
-                      date < new Date() || date > new Date("1900-01-01")
+                      date > new Date() || date < new Date("1900-01-01") || date < arrivalDate
                     }
                     initialFocus
                   />
@@ -137,8 +140,6 @@ function TARInformation() {
             </FormItem>
           )}
         />
-
-        
       </CardContent>
     </Card>
   );

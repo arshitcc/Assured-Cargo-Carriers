@@ -7,9 +7,12 @@ function Remarks() {
   const { control } = useFormContext();
   return (
     <Card className="col-span-3 md:col-span-1 w-full p-0 gap-0 rounded-b-sm ">
-      <CardHeader className="p-3 bg-[#3279b7] text-white rounded-t-sm"> Additional Information </CardHeader>
+      <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
+        {" "}
+        Additional Information{" "}
+      </CardHeader>
       <CardContent className="space-y-2 p-4">
-      <FormField
+        <FormField
           control={control}
           name="additionalInfo.remarks"
           render={({ field }) => (
@@ -18,7 +21,11 @@ function Remarks() {
                 Remarks
               </FormLabel>
               <FormControl>
-                <Textarea className="w-full md:w-2/3" {...field} placeholder="Enter Remarks" />
+                <Textarea
+                  className="w-full md:w-2/3"
+                  {...field}
+                  placeholder="Enter Remarks"
+                />
               </FormControl>
             </FormItem>
           )}

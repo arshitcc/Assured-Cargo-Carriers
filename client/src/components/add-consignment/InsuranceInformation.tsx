@@ -15,7 +15,7 @@ function InsuranceInformation() {
   const { control } = useFormContext();
   return (
     <Card className="col-span-3 md:col-span-2 w-full p-0 gap-0 rounded-b-sm ">
-      <CardHeader className="p-3 bg-[#3279b7] text-white rounded-t-sm">
+      <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
         Insurance Information
       </CardHeader>
       <CardContent className="space-y-2 p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -96,7 +96,9 @@ function InsuranceInformation() {
           name="insuranceInfo.risk"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
-              <FormLabel className="font-semibold w-full md:w-1/3">Risk</FormLabel>
+              <FormLabel className="font-semibold w-full md:w-1/3">
+                Risk
+              </FormLabel>
               <Select onValueChange={field.onChange} defaultValue="Owner Risk">
                 <FormControl>
                   <SelectTrigger className="w-full md:w-2/3">

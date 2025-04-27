@@ -15,18 +15,9 @@ import { Calendar } from "../ui/calendar";
 import { CalendarIcon, Loader, SearchIcon } from "lucide-react";
 import { Input } from "../ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
-const searchChallanSchema = z.object({
-  challanNoVehicleNo: z.string().optional(),
-  branch: z.string().optional(),
-  fromDate: z.date().optional(),
-  toDate: z.date().optional(),
-});
-
-type SearchChallanForm = z.infer<typeof searchChallanSchema>;
+import { use, useState } from "react";
+import { useForm, useWatch } from "react-hook-form";
+import { SearchChallanForm, searchChallanSchema } from "@/schemas/search-challan.schema";
 
 function SearchChallanHeader() {
   const [searching, setSearching] = useState(false);
@@ -36,10 +27,11 @@ function SearchChallanHeader() {
     defaultValues: {
       challanNoVehicleNo: "",
       branch: "",
-      fromDate: new Date(),
-      toDate: new Date(),
     },
   });
+
+  const fromDate = useWatch({ control : searchChallanForm.control, name : "fromDate" });
+  const toDate = useWatch({ control : searchChallanForm.control, name : "toDate" });
 
   const handleSearchChallan = async (data: SearchChallanForm) => {
     setSearching(true);
@@ -62,15 +54,15 @@ function SearchChallanHeader() {
         onSubmit={searchChallanForm.handleSubmit(handleSearchChallan)}
       >
         <Card className="p-0 gap-0 rounded-b-sm">
-          <CardHeader className="p-3 bg-[#3279b7] text-white rounded-t-sm">
+          <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
             Search Challan
           </CardHeader>
-          <CardContent className="mx-auto flex gap-4 py-4">
+          <CardContent className="mx-auto flex flex-col md:flex-row gap-4 py-4">
             <FormField
               name="challanNoVehicleNo"
               control={searchChallanForm.control}
               render={({ field }) => (
-                <FormItem className="flex gap-2">
+                <FormItem className="flex flex-col md:flex-row gap-2">
                   <FormControl>
                     <Input
                       className="disabled:bg-gray-300 font-semibold placeholder:md:text-sm"
@@ -86,7 +78,7 @@ function SearchChallanHeader() {
               name="branch"
               control={searchChallanForm.control}
               render={({ field }) => (
-                <FormItem className="flex gap-2 ">
+                <FormItem className="flex flex-col md:flex-row gap-2 ">
                   <Select onValueChange={field.onChange}>
                     <FormControl>
                       <SelectTrigger>
@@ -110,7 +102,7 @@ function SearchChallanHeader() {
               name="fromDate"
               control={searchChallanForm.control}
               render={({ field }) => (
-                <FormItem className="flex gap-2">
+                <FormItem className="flex flex-col md:flex-row gap-2">
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -136,7 +128,7 @@ function SearchChallanHeader() {
                         selected={field.value}
                         onSelect={field.onChange}
                         disabled={(date) =>
-                          date < new Date() || date > new Date("1900-01-01")
+                          date > new Date() || date < new Date("1900-01-01") || date > (toDate || new Date())
                         }
                         initialFocus
                       />
@@ -149,7 +141,7 @@ function SearchChallanHeader() {
               name="toDate"
               control={searchChallanForm.control}
               render={({ field }) => (
-                <FormItem className="flex gap-2">
+                <FormItem className="flex flex-col md:flex-row gap-2">
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -175,7 +167,7 @@ function SearchChallanHeader() {
                         selected={field.value}
                         onSelect={field.onChange}
                         disabled={(date) =>
-                          date < new Date() || date < new Date("1900-01-01")
+                          date > new Date() || date < new Date("1900-01-01") ||  date<(fromDate as Date)
                         }
                         initialFocus
                       />
@@ -191,9 +183,9 @@ function SearchChallanHeader() {
               className="cursor-pointer bg-[#5FA6C4] hover:bg-[#5FA6C4]"
             >
               {searching ? (
-                <Loader className="mr-2 h-4 w-4 animate-spin" />
+                <Loader className="mr-1 h-4 w-4 animate-spin" />
               ) : (
-                <SearchIcon className="mr-2 h-4 w-4" />
+                <SearchIcon className="mr-1 h-4 w-4" />
               )}
               Search
             </Button>

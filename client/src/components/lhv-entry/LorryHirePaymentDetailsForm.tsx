@@ -9,7 +9,7 @@ export function LorryHirePaymentDetailsForm() {
   return (
     <div className="w-full md:w-1/3">
       <Card className="p-0 gap-0">
-        <CardHeader className="bg-[#3279b7] text-white font-semibold rounded-t-xl py-2">
+        <CardHeader className="font-semibold bg-[#3279b7] text-white rounded-t-xl py-2">
           Lorry Hire Payment Details
         </CardHeader>
         <CardContent className="py-2 px-4 rounded-b-xl overflow-auto space-y-4">
@@ -30,11 +30,11 @@ export function LorryHirePaymentDetailsForm() {
               control={control}
               name={`lorryHirePayment.${name}`}
               render={({ field }) => (
-                <FormItem className="flex gap-2">
-                  <FormLabel className="font-semibold w-1/3">{label}</FormLabel>
+                <FormItem className="flex flex-col md:flex-row gap-2">
+                  <FormLabel className="font-semibold w-full md:w-1/3">{label}</FormLabel>
                   <FormControl>
                     <Input
-                      className={`w-2/3 ${
+                      className={`w-full md:w-2/3 ${
                         name === "totalAmt" || name === "vcrAmount"
                           ? "bg-gray-300 font-bold"
                           : ""

@@ -12,20 +12,20 @@ function TruckArrivalReportHeader() {
   const { control } = useFormContext();
 
   return (
-    <Card className="p-0 gap-0 rounded-b-sm">
-      <CardHeader className="p-3 bg-[#3279b7] text-white rounded-t-sm">
+    <Card className="w-full p-0 gap-0 rounded-b-sm">
+      <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
         Truck Arrival Report
       </CardHeader>
-      <CardContent className="p-3 flex justify-around">
+      <CardContent className="p-3 flex flex-col md:flex-row gap-2 justify-around">
         <FormField
           name="branch"
           control={control}
           render={({ field }) => (
-            <FormItem className="flex gap-2">
+            <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold">Branch</FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3 disabled:bg-gray-300 font-semibold"
+                  className="w-full md:w-2/3 disabled:bg-gray-300 font-semibold"
                   disabled
                   {...field}
                 />
@@ -37,11 +37,11 @@ function TruckArrivalReportHeader() {
           name="challanNo"
           control={control}
           render={({ field }) => (
-            <FormItem className="flex gap-2">
+            <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold">Challan No</FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3 disabled:bg-gray-300 font-semibold"
+                  className="w-full md:w-2/3 disabled:bg-gray-300 font-semibold"
                   disabled
                   {...field}
                 />
@@ -54,7 +54,7 @@ function TruckArrivalReportHeader() {
           name="challanDate"
           control={control}
           render={({ field }) => (
-            <FormItem className="flex gap-2">
+            <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold">Date</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
@@ -72,7 +72,7 @@ function TruckArrivalReportHeader() {
                       ) : (
                         <span>Pick a date</span>
                       )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      <CalendarIcon className="ml-auto h-4 w-full md:w-4 opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
@@ -85,11 +85,11 @@ function TruckArrivalReportHeader() {
           name="type"
           control={control}
           render={({ field }) => (
-            <FormItem className="flex gap-2 w-1/8">
+            <FormItem className="flex flex-col md:flex-row gap-2 w-full md:w-1/8">
               <FormLabel className="font-semibold">Type</FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3 disabled:bg-gray-300 font-semibold"
+                  className="w-full md:w-2/3 disabled:bg-gray-300 font-semibold"
                   disabled
                   {...field}
                 />
@@ -102,11 +102,11 @@ function TruckArrivalReportHeader() {
           name="scheduledDate"
           control={control}
           render={({ field }) => (
-            <FormItem className="flex gap-2">
+            <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold">SchDate</FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3 disabled:bg-gray-300 font-semibold"
+                  className="w-full md:w-2/3 disabled:bg-gray-300 font-semibold"
                   defaultValue={field.value ? format(field.value, "PPP") : ""}
                   disabled
                   {...field}
@@ -120,11 +120,11 @@ function TruckArrivalReportHeader() {
           name="tarBranch"
           control={control}
           render={({ field }) => (
-            <FormItem className="flex gap-2">
+            <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold">Branch</FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3 disabled:bg-gray-300 font-semibold"
+                  className="w-full md:w-2/3 disabled:bg-gray-300 font-semibold"
                   disabled
                   {...field}
                 />

@@ -13,8 +13,8 @@ import {
 function VehicleInformation() {
   const { control } = useFormContext();
   return (
-    <Card className="w-full p-0 gap-0 rounded-b-sm">
-      <CardHeader className="p-3 bg-[#3279b7] text-white rounded-t-sm">
+    <Card className="w-full col-span-3 md:col-span-1 p-0 gap-0 rounded-b-sm">
+      <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
         Vehichle Information
       </CardHeader>
       <CardContent className="space-y-2 p-4">
@@ -22,11 +22,13 @@ function VehicleInformation() {
           name="vehicleInfo.vehicleType"
           control={control}
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="w-1/3 font-semibold">Vehicle Type</FormLabel>
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="w-full md:w-1/3 font-semibold">
+                Vehicle Type
+              </FormLabel>
               <Select onValueChange={field.onChange} defaultValue="Market">
                 <FormControl>
-                  <SelectTrigger className="w-2/3">
+                  <SelectTrigger className="w-full md:w-2/3">
                     <SelectValue placeholder="Select Vehicle Type" />
                   </SelectTrigger>
                 </FormControl>
@@ -50,12 +52,12 @@ function VehicleInformation() {
           control={control}
           name="vehicleInfo.vehicleRegistrationNumber"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 Vehicle Registration Number
               </FormLabel>
               <FormControl>
-                <Input className="w-2/3" {...field} />
+                <Input className="w-full md:w-2/3" placeholder="Vehicle Registration Number" {...field} />
               </FormControl>
             </FormItem>
           )}
@@ -65,13 +67,13 @@ function VehicleInformation() {
           control={control}
           name="vehicleInfo.engineNumber"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 Engine Number
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Engine Number"
                   {...field}
                 />
@@ -84,13 +86,13 @@ function VehicleInformation() {
           control={control}
           name="vehicleInfo.chasisNumber"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 Chasis Number
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Chasis Number"
                   {...field}
                 />
@@ -102,10 +104,12 @@ function VehicleInformation() {
           control={control}
           name="vehicleInfo.make"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">Make</FormLabel>
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
+                Make
+              </FormLabel>
               <FormControl>
-                <Input className="w-2/3" {...field} />
+                <Input className="w-full md:w-2/3" placeholder="Make" {...field} />
               </FormControl>
             </FormItem>
           )}
@@ -114,10 +118,12 @@ function VehicleInformation() {
           control={control}
           name="vehicleInfo.capacity"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">Capacity</FormLabel>
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
+                Capacity
+              </FormLabel>
               <FormControl>
-                <Input className="w-2/3" {...field} />
+                <Input className="w-full md:w-2/3" placeholder="Capacity" {...field} />
               </FormControl>
             </FormItem>
           )}
@@ -126,13 +132,13 @@ function VehicleInformation() {
           control={control}
           name="vehicleInfo.permitNumber"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 Permit Number
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Permit Number"
                   {...field}
                 />
@@ -144,13 +150,13 @@ function VehicleInformation() {
           control={control}
           name="vehicleInfo.insuranceNumber"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 Insurance Number
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Insurance Number"
                   {...field}
                 />
@@ -163,13 +169,13 @@ function VehicleInformation() {
           control={control}
           name="vehicleInfo.insuranceCompany"
           render={({ field }) => (
-            <FormItem className="flex gap-2">
-              <FormLabel className="font-semibold w-1/3">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
                 Insurance Company
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-2/3"
+                  className="w-full md:w-2/3"
                   placeholder="Insurance Company"
                   {...field}
                 />

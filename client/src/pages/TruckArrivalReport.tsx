@@ -3,27 +3,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { Form } from "@/components/ui/form";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { LoaderIcon, SaveIcon } from "lucide-react";
 import TruckArrivalReportHeader from "@/components/truck-arrival-report/TruckArrivalReportHeader";
 import ChecklistAndRemarks from "@/components/truck-arrival-report/ChecklistAndRemarks";
 import TARInformation from "@/components/truck-arrival-report/TARInformation";
 import ChallanInformation from "@/components/truck-arrival-report/ChallanInformation";
-
-const truckArrivalReportSchema = z.object({
-  branch: z.any(),
-  challanNo: z.any(),
-  challanDate: z.any(),
-  type: z.any(),
-  scheduledDate: z.any(),
-  tarBranch: z.any(),
-  challanInfo: z.any(),
-  tarInfo: z.any(),
-  checklistAndRemarks: z.any(),
-});
-
-type TruckArrivalReportForm = z.infer<typeof truckArrivalReportSchema>;
+import { TruckArrivalReportForm, truckArrivalReportSchema } from "@/schemas/truck-arrival-report.schema";
 
 function TruckArrivalReport() {
   const [editing, setEditing] = useState(false);
@@ -51,10 +37,7 @@ function TruckArrivalReport() {
         balanceLorryHire: "",
         loadingRemarks: "",
       },
-      tarInfo: {
-        tarDate: new Date(),
-        arrivalDate: new Date(),
-        unloadingDate: new Date(),
+      tarInfo : {
       },
       checklistAndRemarks: {
         isTotalPaymentRecieved: false,
@@ -90,7 +73,7 @@ function TruckArrivalReport() {
           >
             <FormProvider {...editChallanForm}>
               <TruckArrivalReportHeader />
-              <div className="flex gap-4">
+              <div className="grid grid-cols-1 md:grid-rows-2 md:grid-cols-2 gap-4">
                 <ChallanInformation/>
                 <TARInformation />
                 <ChecklistAndRemarks />
