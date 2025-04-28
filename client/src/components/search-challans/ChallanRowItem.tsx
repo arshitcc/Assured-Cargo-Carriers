@@ -34,17 +34,17 @@ function ChallanRowItem() {
         {[
           1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
         ].map((item) => (
-          <TableRow key={item}>
-            <TableCell className="text-[#5589A8] border">19768</TableCell>
-            <TableCell className="border">21-Apr-2025</TableCell>
-            <TableCell className="border">Pune</TableCell>
-            <TableCell className="border">Mahalunge Ingale Khed Pune - 410501 [MH]</TableCell>
-            <TableCell className="border">Additional Ambemath Ambamath Thane - 421506 [MH]</TableCell>
-            <TableCell className="border">Main</TableCell>
-            <TableCell className="border">MH14KA8409</TableCell>
-            <TableCell className="border">1</TableCell>
-            <TableCell className="border">800</TableCell>
-            <TableCell className="border">3000</TableCell>
+          <TableRow key={item} className="hover:bg-zinc-200">
+            <TableCell className="text-[#5589A8] border text-xs ">19768</TableCell>
+            <TableCell className="border text-xs">21-Apr-2025</TableCell>
+            <TableCell className="border text-xs">Pune</TableCell>
+            <TableCell className="border text-xs">Mahalunge Ingale Khed Pune - 410501 [MH]</TableCell>
+            <TableCell className="border text-xs">Additional Ambemath Ambamath Thane - 421506 [MH]</TableCell>
+            <TableCell className="border text-xs">Main</TableCell>
+            <TableCell className="border text-xs">MH14KA8409</TableCell>
+            <TableCell className="border text-xs">1</TableCell>
+            <TableCell className="border text-xs">800</TableCell>
+            <TableCell className="border text-xs">3000</TableCell>
             <TableCell className="border space-x-4">
               <Button className="cursor-pointer bg-[#E09D70] hover:bg-[#E09D70]"><EditIcon/>Edit</Button>
               <Button className="cursor-pointer bg-[#53A54C] hover:bg-[#53A54C]"><PrinterIcon/>Print</Button>
