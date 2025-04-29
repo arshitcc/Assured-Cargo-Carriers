@@ -1,5 +1,10 @@
-import { FormField, FormItem, FormLabel, FormControl } from "../ui/form";
-import { Input } from "../ui/input";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { useFormContext } from "react-hook-form";
 import {
   Select,
@@ -7,8 +12,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
-import { Card, CardContent, CardHeader } from "../ui/card";
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export function ChallanDetailsForm() {
   const { control } = useFormContext();
@@ -40,7 +45,9 @@ export function ChallanDetailsForm() {
             name="challanDetails.date"
             render={({ field }) => (
               <FormItem className="flex flex-col md:flex-row gap-2">
-                <FormLabel className="font-semibold w-full md:w-1/3">Date</FormLabel>
+                <FormLabel className="font-semibold w-full md:w-1/3">
+                  Date
+                </FormLabel>
                 <FormControl>
                   <Input className="w-full md:w-2/3" type="date" {...field} />
                 </FormControl>
@@ -53,7 +60,9 @@ export function ChallanDetailsForm() {
             name="challanDetails.from"
             render={({ field }) => (
               <FormItem className="flex flex-col md:flex-row gap-2">
-                <FormLabel className="font-semibold w-full md:w-1/3">From</FormLabel>
+                <FormLabel className="font-semibold w-full md:w-1/3">
+                  From
+                </FormLabel>
                 <FormControl>
                   <Input className="w-full md:w-2/3" {...field} />
                 </FormControl>
@@ -66,7 +75,9 @@ export function ChallanDetailsForm() {
             name="challanDetails.to"
             render={({ field }) => (
               <FormItem className="flex flex-col md:flex-row gap-2">
-                <FormLabel className="font-semibold w-full md:w-1/3">To</FormLabel>
+                <FormLabel className="font-semibold w-full md:w-1/3">
+                  To
+                </FormLabel>
                 <FormControl>
                   <Input className="w-full md:w-2/3" {...field} />
                 </FormControl>
@@ -79,7 +90,9 @@ export function ChallanDetailsForm() {
             name="challanDetails.branch"
             render={({ field }) => (
               <FormItem className="flex flex-col md:flex-row gap-2">
-                <FormLabel className="font-semibold w-full md:w-1/3">Branch</FormLabel>
+                <FormLabel className="font-semibold w-full md:w-1/3">
+                  Branch
+                </FormLabel>
                 <FormControl>
                   <Input className="w-full md:w-2/3" {...field} />
                 </FormControl>
@@ -127,9 +140,15 @@ export function ChallanDetailsForm() {
               name={`challanDetails.${name}`}
               render={({ field }) => (
                 <FormItem className="flex flex-col md:flex-row gap-2">
-                  <FormLabel className="font-semibold w-full md:w-1/3">{label}</FormLabel>
+                  <FormLabel className="font-semibold w-full md:w-1/3">
+                    {label}
+                  </FormLabel>
                   <FormControl>
-                    <Input className="w-full md:w-2/3" type="number" {...field} />
+                    <Input
+                      className="w-full md:w-2/3"
+                      type="number"
+                      {...field}
+                    />
                   </FormControl>
                 </FormItem>
               )}
@@ -151,7 +170,9 @@ export function ChallanDetailsForm() {
               name={`challanDetails.${name}`}
               render={({ field }) => (
                 <FormItem className="flex flex-col md:flex-row gap-2">
-                  <FormLabel className="font-semibold w-full md:w-1/3">{label}</FormLabel>
+                  <FormLabel className="font-semibold w-full md:w-1/3">
+                    {label}
+                  </FormLabel>
                   <FormControl>
                     <Input className="w-full md:w-2/3" {...field} />
                   </FormControl>

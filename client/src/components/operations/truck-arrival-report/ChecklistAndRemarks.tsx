@@ -1,20 +1,25 @@
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
 import { useFormContext } from "react-hook-form";
-import { Textarea } from "../ui/textarea";
-import { Checkbox } from "../ui/checkbox";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 
 function ChecklistAndRemarks() {
   const { control } = useFormContext();
   return (
-    <Card className="w-full col-span-3 md:col-span-1 p-0 gap-0 rounded-b-xs">
+    <Card className="col-span-1 row-span-1 w-full p-0 gap-0 rounded-b-sm">
       <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
         Checklist and Loading Remarks
       </CardHeader>
       <CardContent className="space-y-4 p-4">
         <FormField
           control={control}
-          name="checklistAndRemarks.isDL_ScannedAndVerified"
+          name="checklistAndRemarks.isTotalPaymentRecieved"
           render={({ field }) => (
             <FormItem className="flex gap-2">
               <FormControl>
@@ -25,7 +30,7 @@ function ChecklistAndRemarks() {
               </FormControl>
               <div className="space-y-1 leading-none">
                 <FormLabel className="text-xs md:text-sm">
-                  Is Driving License of Driver Scanned and Verified ?
+                  Is Total Payment Recieved ?
                 </FormLabel>
               </div>
             </FormItem>
@@ -33,7 +38,7 @@ function ChecklistAndRemarks() {
         />
         <FormField
           control={control}
-          name="checklistAndRemarks.isPAN_LorryOwner_ScannedAndVerified"
+          name="checklistAndRemarks.isPOD_with_ClearSignAndStamp"
           render={({ field }) => (
             <FormItem className="flex gap-2">
               <FormControl>
@@ -44,7 +49,7 @@ function ChecklistAndRemarks() {
               </FormControl>
               <div className="space-y-1 leading-none">
                 <FormLabel className="text-xs md:text-sm">
-                  Is PAN of Lorry Owner Scanned and Verified ?
+                  Is POD is recieved with clear sign and stamp ?
                 </FormLabel>
               </div>
             </FormItem>
@@ -52,7 +57,7 @@ function ChecklistAndRemarks() {
         />
         <FormField
           control={control}
-          name="checklistAndRemarks.isRC_Vehicle_ScannedAndVerified"
+          name="checklistAndRemarks.isShortExcessDamageLeakageVerified"
           render={({ field }) => (
             <FormItem className="flex gap-2">
               <FormControl>
@@ -63,7 +68,26 @@ function ChecklistAndRemarks() {
               </FormControl>
               <div className="space-y-1 leading-none">
                 <FormLabel className="text-xs md:text-sm">
-                  Is RC of Vehicle Scanned and Verified ?
+                  Is Short/Excess/Damage/Leakage verified ?
+                </FormLabel>
+              </div>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="checklistAndRemarks.isVehicleDetainedByCustomer"
+          render={({ field }) => (
+            <FormItem className="flex gap-2">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel className="text-xs md:text-sm">
+                  Is Vehicle detained by Customer ?
                 </FormLabel>
               </div>
             </FormItem>

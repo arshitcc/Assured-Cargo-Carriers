@@ -1,8 +1,13 @@
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
 import { useFormContext } from "react-hook-form";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 function ChallanInformation() {
   const { control } = useFormContext();

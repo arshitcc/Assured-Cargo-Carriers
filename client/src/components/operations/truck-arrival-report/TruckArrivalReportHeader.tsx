@@ -1,12 +1,17 @@
 import { useFormContext } from "react-hook-form";
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
-import { Popover, PopoverTrigger } from "../ui/popover";
-import { Button } from "../ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
+import { Popover, PopoverTrigger } from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
 
 function TruckArrivalReportHeader() {
   const { control } = useFormContext();

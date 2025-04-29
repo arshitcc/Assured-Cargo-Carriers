@@ -1,76 +1,63 @@
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
-import { useFormContext, useWatch } from "react-hook-form";
-import { Input } from "../ui/input";
-import { useEffect } from "react";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
+import { useFormContext } from "react-hook-form";
+import { Input } from "@/components/ui/input";
 
-function FreightInformation() {
-  const { control, setValue } = useFormContext();
-
-  const totalFreight = useWatch({ control, name : "freightInfo.totalFreight"});
-  const advance = useWatch({ control, name : "freightInfo.advance"});
-
-  useEffect(() => {
-    const sum = (Number(totalFreight) || 0) - (Number(advance) || 0);
-    setValue("freightInfo.balance", sum);
-  },[ totalFreight, advance]);
+function ChallanInformation() {
+  const { control } = useFormContext();
 
   return (
-    <Card className="col-span-3 md:col-span-1 w-full p-0 gap-0 rounded-b-sm">
+    <Card className="w-full col-span-3 md:col-span-1 p-0 gap-0 rounded-b-sm">
       <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
-        Freight Information
+        Challan Information
       </CardHeader>
       <CardContent className="space-y-2 p-4">
         <FormField
           control={control}
-          name="freightInfo.totalFreight"
+          name="challanInfo.fromStation"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold w-full md:w-1/3">
-                Total Freight
+                From Station
               </FormLabel>
               <FormControl>
-                <Input
-                  className="w-full md:w-2/3"
-                  placeholder="Enter Total Freight"
-                  {...field}
-                />
+                <Input className="w-full md:w-2/3" {...field} />
               </FormControl>
             </FormItem>
           )}
         />
-
         <FormField
           control={control}
-          name="freightInfo.advance"
+          name="challanInfo.toStation"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold w-full md:w-1/3">
-                Advance
+                To Station
               </FormLabel>
               <FormControl>
-                <Input
-                  className="w-full md:w-2/3"
-                  placeholder="Enter Advance Amount"
-                  {...field}
-                />
+                <Input className="w-full md:w-2/3" {...field} />
               </FormControl>
             </FormItem>
           )}
         />
-
         <FormField
           control={control}
-          name="freightInfo.balance"
+          name="challanInfo.numberOfConsignment"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold w-full md:w-1/3">
-                Balance
+                Number of Consignment
               </FormLabel>
               <FormControl>
                 <Input
                   className="w-full md:w-2/3 disabled:bg-gray-300"
                   disabled
+                  defaultValue={0}
                   {...field}
                 />
               </FormControl>
@@ -82,4 +69,4 @@ function FreightInformation() {
   );
 }
 
-export default FreightInformation;
+export default ChallanInformation;

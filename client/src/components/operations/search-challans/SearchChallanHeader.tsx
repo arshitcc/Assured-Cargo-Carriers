@@ -1,23 +1,30 @@
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { Form, FormControl, FormField, FormItem } from "../ui/form";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Button } from "../ui/button";
+} from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { Calendar } from "../ui/calendar";
+import { Calendar } from "@/components/ui/calendar";
 import { CalendarIcon, Loader, SearchIcon } from "lucide-react";
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { use, useState } from "react";
+import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { SearchChallanForm, searchChallanSchema } from "@/schemas/search-challan.schema";
+import {
+  SearchChallanForm,
+  searchChallanSchema,
+} from "@/schemas/operations/search-challan.schema";
 
 function SearchChallanHeader() {
   const [searching, setSearching] = useState(false);
@@ -30,8 +37,14 @@ function SearchChallanHeader() {
     },
   });
 
-  const fromDate = useWatch({ control : searchChallanForm.control, name : "fromDate" });
-  const toDate = useWatch({ control : searchChallanForm.control, name : "toDate" });
+  const fromDate = useWatch({
+    control: searchChallanForm.control,
+    name: "fromDate",
+  });
+  const toDate = useWatch({
+    control: searchChallanForm.control,
+    name: "toDate",
+  });
 
   const handleSearchChallan = async (data: SearchChallanForm) => {
     setSearching(true);
@@ -57,7 +70,7 @@ function SearchChallanHeader() {
           <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
             Search Challan
           </CardHeader>
-          <CardContent className="mx-auto flex flex-col md:flex-row gap-4 py-4">
+          <CardContent className="p-3 mx-auto flex flex-col md:flex-row gap-4">
             <FormField
               name="challanNoVehicleNo"
               control={searchChallanForm.control}
@@ -128,7 +141,9 @@ function SearchChallanHeader() {
                         selected={field.value}
                         onSelect={field.onChange}
                         disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01") || date > (toDate || new Date())
+                          date > new Date() ||
+                          date < new Date("1900-01-01") ||
+                          date > (toDate || new Date())
                         }
                         initialFocus
                       />
@@ -167,7 +182,9 @@ function SearchChallanHeader() {
                         selected={field.value}
                         onSelect={field.onChange}
                         disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01") ||  date<(fromDate as Date)
+                          date > new Date() ||
+                          date < new Date("1900-01-01") ||
+                          date < (fromDate as Date)
                         }
                         initialFocus
                       />

@@ -1,15 +1,19 @@
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
 import { useFormContext } from "react-hook-form";
-import { Textarea } from "../ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
 
 function Remarks() {
   const { control } = useFormContext();
   return (
-    <Card className="col-span-3 md:col-span-1 w-full p-0 gap-0 rounded-b-sm ">
+    <Card className="col-span-3 md:col-span-1 w-full p-0 gap-0 rounded-b-sm h-full md:h-1/2">
       <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
-        {" "}
-        Additional Information{" "}
+        Additional Information
       </CardHeader>
       <CardContent className="space-y-2 p-4">
         <FormField

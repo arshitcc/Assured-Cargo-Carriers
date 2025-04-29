@@ -5,11 +5,14 @@ import { useState } from "react";
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { LoaderIcon, SaveIcon } from "lucide-react";
-import TruckArrivalReportHeader from "@/components/truck-arrival-report/TruckArrivalReportHeader";
-import ChecklistAndRemarks from "@/components/truck-arrival-report/ChecklistAndRemarks";
-import TARInformation from "@/components/truck-arrival-report/TARInformation";
-import ChallanInformation from "@/components/truck-arrival-report/ChallanInformation";
-import { TruckArrivalReportForm, truckArrivalReportSchema } from "@/schemas/truck-arrival-report.schema";
+import TruckArrivalReportHeader from "@/components/operations/truck-arrival-report/TruckArrivalReportHeader";
+import ChecklistAndRemarks from "@/components/operations/truck-arrival-report/ChecklistAndRemarks";
+import TARInformation from "@/components/operations/truck-arrival-report/TARInformation";
+import ChallanInformation from "@/components/operations/truck-arrival-report/ChallanInformation";
+import {
+  TruckArrivalReportForm,
+  truckArrivalReportSchema,
+} from "@/schemas/operations/truck-arrival-report.schema";
 
 function TruckArrivalReport() {
   const [editing, setEditing] = useState(false);
@@ -37,8 +40,7 @@ function TruckArrivalReport() {
         balanceLorryHire: "",
         loadingRemarks: "",
       },
-      tarInfo : {
-      },
+      tarInfo: {},
       checklistAndRemarks: {
         isTotalPaymentRecieved: false,
         isPOD_with_ClearSignAndStamp: false,
@@ -74,7 +76,7 @@ function TruckArrivalReport() {
             <FormProvider {...editChallanForm}>
               <TruckArrivalReportHeader />
               <div className="grid grid-cols-1 md:grid-rows-2 md:grid-cols-2 gap-4">
-                <ChallanInformation/>
+                <ChallanInformation />
                 <TARInformation />
                 <ChecklistAndRemarks />
               </div>

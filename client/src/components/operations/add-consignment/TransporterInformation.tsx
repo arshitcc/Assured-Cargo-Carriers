@@ -1,28 +1,34 @@
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
 import { useFormContext } from "react-hook-form";
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
-function VehicleInformation() {
+function TransporterInformation() {
   const { control } = useFormContext();
   return (
     <Card className="col-span-3 md:col-span-1 w-full p-0 gap-0 rounded-b-sm">
       <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
-        Vehichle Information
+        Transporter Information
       </CardHeader>
       <CardContent className="space-y-2 p-4">
         <FormField
           control={control}
-          name="vehicleInfo.vehicleNumber"
+          name="transporterInfo.transporterName"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold w-full md:w-1/3">
-                Vehicle Number
+                Transporter Name
               </FormLabel>
               <FormControl>
                 <Input
                   className="w-full md:w-2/3"
-                  placeholder="Enter Vehicle Number"
+                  placeholder="Enter Transporter Name"
                   {...field}
                 />
               </FormControl>
@@ -31,16 +37,16 @@ function VehicleInformation() {
         />
         <FormField
           control={control}
-          name="vehicleInfo.from"
+          name="transporterInfo.transporterCode"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold w-full md:w-1/3">
-                From
+                Transporter Code
               </FormLabel>
               <FormControl>
                 <Input
-                  className="w-full md:w-2/3"
-                  placeholder="Mumbai, Maharashtra, India"
+                  className="w-full md:w-2/3 disabled:bg-gray-300 font-semibold"
+                  disabled
                   {...field}
                 />
               </FormControl>
@@ -49,17 +55,17 @@ function VehicleInformation() {
         />
         <FormField
           control={control}
-          name="vehicleInfo.to"
+          name="transporterInfo.transporterAddress"
           render={({ field }) => (
-            <FormItem className="flex flex-col md:flex-row gap-2">
-              <FormLabel className="font-semibold w-full md:w-1/3">
-                To
+            <FormItem className="flex flex-col md:flex-row gap-2 items-center">
+              <FormLabel className="font-semibold w-full md:w-1/3 self-start mt-3">
+                Transporter Address
               </FormLabel>
               <FormControl>
-                <Input
+                <Textarea
                   className="w-full md:w-2/3"
-                  placeholder="Varanasi, Uttar Pradesh, India"
                   {...field}
+                  placeholder="Enter Transporter Address"
                 />
               </FormControl>
             </FormItem>
@@ -70,4 +76,4 @@ function VehicleInformation() {
   );
 }
 
-export default VehicleInformation;
+export default TransporterInformation;

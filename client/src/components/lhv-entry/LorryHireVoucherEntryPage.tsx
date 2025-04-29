@@ -1,9 +1,15 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { voucherEntrySchema, VoucherEntry } from "../../schemas/forms";
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
-import { Form, FormField, FormItem, FormLabel, FormControl } from "../ui/form";
-import { Button } from "../ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+} from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
 import { ChallanDetailsForm } from "./ChallanDetailsForm";
 import { LorryHirePaymentDetailsForm } from "./LorryHirePaymentDetailsForm";
 import { PaymentModeForm } from "./PaymentModeForm";
@@ -14,9 +20,13 @@ import {
   SelectGroup,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
-import { Calendar } from "../ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+} from "@/components/ui/select";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
@@ -70,7 +80,9 @@ export default function LorryHireVoucherEntryPage() {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem className="flex flex-col md:flex-row gap-2">
-                    <FormLabel className="font-semibold w-full md:w-1/3">Branch</FormLabel>
+                    <FormLabel className="font-semibold w-full md:w-1/3">
+                      Branch
+                    </FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}

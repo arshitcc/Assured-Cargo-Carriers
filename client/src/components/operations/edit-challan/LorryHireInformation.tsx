@@ -1,28 +1,61 @@
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
 import { useFormContext, useWatch } from "react-hook-form";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { useEffect } from "react";
 
 function LorryHireInformation() {
   const { control, setValue } = useFormContext();
 
-  const lorryHire = useWatch({ control, name : "lorryHireInfo.lorryHire"});
-  const extraHeightCharges = useWatch({ control, name : "lorryHireInfo.extraHeightCharges"});
-  const extraLengthCharges = useWatch({ control, name : "lorryHireInfo.extraLengthCharges"});
-  const detentionCharges = useWatch({ control, name : "lorryHireInfo.detentionCharges"});
-  const extraCharges = useWatch({ control, name : "lorryHireInfo.extraCharges"});
-  const advanceLorryHire = useWatch({ control, name : "lorryHireInfo.advanceLorryHire"});
+  const lorryHire = useWatch({ control, name: "lorryHireInfo.lorryHire" });
+  const extraHeightCharges = useWatch({
+    control,
+    name: "lorryHireInfo.extraHeightCharges",
+  });
+  const extraLengthCharges = useWatch({
+    control,
+    name: "lorryHireInfo.extraLengthCharges",
+  });
+  const detentionCharges = useWatch({
+    control,
+    name: "lorryHireInfo.detentionCharges",
+  });
+  const extraCharges = useWatch({
+    control,
+    name: "lorryHireInfo.extraCharges",
+  });
+  const advanceLorryHire = useWatch({
+    control,
+    name: "lorryHireInfo.advanceLorryHire",
+  });
 
   useEffect(() => {
-
-    const finalAmount = (Number(lorryHire) || 0) + (Number(extraHeightCharges) || 0) + (Number(extraLengthCharges) || 0) + (Number(detentionCharges) || 0) + (Number(extraCharges) || 0);
+    const finalAmount =
+      (Number(lorryHire) || 0) +
+      (Number(extraHeightCharges) || 0) +
+      (Number(extraLengthCharges) || 0) +
+      (Number(detentionCharges) || 0) +
+      (Number(extraCharges) || 0);
     setValue("lorryHireInfo.totalLorryHire", finalAmount);
-    setValue("lorryHireInfo.balanceLorryHire", finalAmount - Number(advanceLorryHire));
-
-  }, [ lorryHire, extraLengthCharges, extraHeightCharges, detentionCharges, extraCharges, advanceLorryHire, extraCharges]);
-
+    setValue(
+      "lorryHireInfo.balanceLorryHire",
+      finalAmount - Number(advanceLorryHire)
+    );
+  }, [
+    lorryHire,
+    extraLengthCharges,
+    extraHeightCharges,
+    detentionCharges,
+    extraCharges,
+    advanceLorryHire,
+    extraCharges,
+  ]);
 
   return (
     <Card className="w-full col-span-3 md:col-span-1 p-0 gap-0 rounded-b-sm">
@@ -129,7 +162,11 @@ function LorryHireInformation() {
                 Total Lorry Hire
               </FormLabel>
               <FormControl>
-                <Input className="w-full md:w-2/3 disabled:bg-gray-300" disabled {...field} />
+                <Input
+                  className="w-full md:w-2/3 disabled:bg-gray-300"
+                  disabled
+                  {...field}
+                />
               </FormControl>
             </FormItem>
           )}
@@ -157,7 +194,11 @@ function LorryHireInformation() {
                 Balance Lorry Hire
               </FormLabel>
               <FormControl>
-                <Input className="w-full md:w-2/3 disabled:bg-gray-300" disabled {...field} />
+                <Input
+                  className="w-full md:w-2/3 disabled:bg-gray-300"
+                  disabled
+                  {...field}
+                />
               </FormControl>
             </FormItem>
           )}

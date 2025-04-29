@@ -8,7 +8,7 @@ import AddConginment from "./pages/operation/AddConginment.tsx";
 import EditChallan from "./pages/operation/EditChallan.tsx";
 import SearchChallans from "./pages/operation/SearchChallans.tsx";
 import TruckArrivalReport from "./pages/operation/TruckArrivalReport.tsx";
-import AddThisConsignment from "./components/edit-challan/AddThisConsignment.tsx";
+import AddThisConsignment from "./components/operations/edit-challan/AddThisConsignment.tsx";
 import Bills from "./pages/finance/Bills.tsx";
 import BillEntry from "./pages/finance/BillEntry.tsx";
 

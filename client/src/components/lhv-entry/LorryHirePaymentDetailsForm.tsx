@@ -1,7 +1,12 @@
 import { useFormContext } from "react-hook-form";
-import { FormField, FormItem, FormLabel, FormControl } from "../ui/form";
-import { Input } from "../ui/input";
-import { Card, CardContent, CardHeader } from "../ui/card";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export function LorryHirePaymentDetailsForm() {
   const { control } = useFormContext();
@@ -31,7 +36,9 @@ export function LorryHirePaymentDetailsForm() {
               name={`lorryHirePayment.${name}`}
               render={({ field }) => (
                 <FormItem className="flex flex-col md:flex-row gap-2">
-                  <FormLabel className="font-semibold w-full md:w-1/3">{label}</FormLabel>
+                  <FormLabel className="font-semibold w-full md:w-1/3">
+                    {label}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       className={`w-full md:w-2/3 ${

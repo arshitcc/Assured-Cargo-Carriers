@@ -1,37 +1,48 @@
 import { useFormContext } from "react-hook-form";
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Button } from "../ui/button";
+} from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { Calendar } from "../ui/calendar";
+import { Calendar } from "@/components/ui/calendar";
 import { CalendarIcon } from "lucide-react";
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
-function EditChallanHeader() {
+function AddConsignmentHeader() {
   const { control } = useFormContext();
 
   return (
-    <Card className="w-full p-0 gap-0 rounded-b-sm">
+    <Card className="p-0 gap-0 rounded-b-sm">
       <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
-        Edit Challan
+        Add Consignment
       </CardHeader>
-      <CardContent className="p-3 flex flex-col md:flex-row gap-2 justify-around">
+      <CardContent className="p-3 flex flex-col md:flex-wrap md:flex-row gap-4 justify-around">
         <FormField
           name="branch"
           control={control}
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
-              <FormLabel className="font-semibold">Branch</FormLabel>
+              <FormLabel className="font-semibold w-full md:w-1/3">
+                BrCd
+              </FormLabel>
               <Select onValueChange={field.onChange} defaultValue="Pune">
                 <FormControl>
                   <SelectTrigger className="w-full md:w-2/3">
@@ -51,14 +62,15 @@ function EditChallanHeader() {
           )}
         />
         <FormField
-          name="challanNo"
+          name="consignmentNo"
           control={control}
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
-              <FormLabel className="font-semibold">Challan No</FormLabel>
+              <FormLabel className="font-semibold">CnNo</FormLabel>
               <FormControl>
                 <Input
                   className="w-full md:w-2/3 disabled:bg-gray-300 font-semibold"
+                  disabled
                   {...field}
                 />
               </FormControl>
@@ -67,7 +79,7 @@ function EditChallanHeader() {
         />
 
         <FormField
-          name="challanDate"
+          name="consignmentDate"
           control={control}
           render={({ field }) => {
             const [open, setOpen] = useState(false);
@@ -106,7 +118,7 @@ function EditChallanHeader() {
                         setOpen(false);
                       }}
                       disabled={(date) =>
-                        date >= new Date() || date < new Date("1900-01-01")
+                        date < new Date() || date < new Date("1900-01-01")
                       }
                       initialFocus
                     />
@@ -120,20 +132,20 @@ function EditChallanHeader() {
           name="departureBranch"
           control={control}
           render={({ field }) => (
-            <FormItem className="flex flex-col md:flex-row gap-2 w-full md:w-1/8">
-              <FormLabel className="font-semibold">Type</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue="Main">
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold">DepBr</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue="Pune">
                 <FormControl>
                   <SelectTrigger className="w-full md:w-2/3">
                     <SelectValue placeholder="Select Branch" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="Main" className="hover:bg-gray-100">
-                    Main
+                  <SelectItem value="Pune" className="hover:bg-gray-100">
+                    Pune
                   </SelectItem>
-                  <SelectItem value="Others" className="hover:bg-gray-100">
-                    Others
+                  <SelectItem value="Surat" className="hover:bg-gray-100">
+                    Surat
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -162,7 +174,7 @@ function EditChallanHeader() {
                         {field.value ? (
                           format(field.value, "PPP")
                         ) : (
-                          <span>Pick a Delivery date</span>
+                          <span>Pick a date</span>
                         )}
                         <CalendarIcon className="ml-auto h-4 w-full md:w-4 opacity-50" />
                       </Button>
@@ -180,7 +192,7 @@ function EditChallanHeader() {
                         setOpen(false);
                       }}
                       disabled={(date) =>
-                        date <= new Date() || date < new Date("1900-01-01")
+                        date < new Date() || date < new Date("1900-01-01")
                       }
                       initialFocus
                     />
@@ -195,4 +207,4 @@ function EditChallanHeader() {
   );
 }
 
-export default EditChallanHeader;
+export default AddConsignmentHeader;

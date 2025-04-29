@@ -1,18 +1,27 @@
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
 import { useFormContext, useWatch } from "react-hook-form";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Button } from "../ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { Calendar } from "../ui/calendar";
+import { Calendar } from "@/components/ui/calendar";
 
 function TARInformation() {
   const { control } = useFormContext();
 
-  const arrivalDate = useWatch({ control, name : "tarInfo.arrivalDate"});
-  const unloadingDate = useWatch({ control, name : "tarInfo.unloadingDate"});
+  const arrivalDate = useWatch({ control, name: "tarInfo.arrivalDate" });
+  const unloadingDate = useWatch({ control, name: "tarInfo.unloadingDate" });
 
   return (
     <Card className="row-auto col-span-1 w-full p-0 gap-0 rounded-b-sm">
@@ -25,7 +34,9 @@ function TARInformation() {
           control={control}
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
-              <FormLabel className="font-semibold w-full md:w-1/2">TAR Date</FormLabel>
+              <FormLabel className="font-semibold w-full md:w-1/2">
+                TAR Date
+              </FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -65,7 +76,9 @@ function TARInformation() {
           control={control}
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
-              <FormLabel className="font-semibold w-full md:w-1/3"> Arrival Date </FormLabel>
+              <FormLabel className="font-semibold w-full md:w-1/3">
+                Arrival Date
+              </FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -91,7 +104,9 @@ function TARInformation() {
                     selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) =>
-                      date > new Date() || date < new Date("1900-01-01") || date > unloadingDate
+                      date > new Date() ||
+                      date < new Date("1900-01-01") ||
+                      date > unloadingDate
                     }
                     initialFocus
                   />
@@ -105,7 +120,9 @@ function TARInformation() {
           control={control}
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
-              <FormLabel className="font-semibold w-full md:w-1/3"> Unloading Date </FormLabel>
+              <FormLabel className="font-semibold w-full md:w-1/3">
+                Unloading Date
+              </FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -131,7 +148,9 @@ function TARInformation() {
                     selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) =>
-                      date > new Date() || date < new Date("1900-01-01") || date < arrivalDate
+                      date > new Date() ||
+                      date < new Date("1900-01-01") ||
+                      date < arrivalDate
                     }
                     initialFocus
                   />

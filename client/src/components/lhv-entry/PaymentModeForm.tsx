@@ -1,15 +1,20 @@
 import { useFormContext } from "react-hook-form";
-import { FormField, FormItem, FormLabel, FormControl } from "../ui/form";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+} from "@/components/ui/form";
 import {
   Select,
   SelectTrigger,
   SelectItem,
   SelectContent,
   SelectValue,
-} from "../ui/select";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { Card, CardHeader, CardContent } from "../ui/card";
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 export function PaymentModeForm() {
   const { control } = useFormContext();
@@ -18,7 +23,7 @@ export function PaymentModeForm() {
     <div className="w-full md:w-1/3">
       <Card className=" p-0 gap-0">
         <CardHeader className="font-semibold bg-[#3279b7] text-white rounded-t-xl py-2">
-          Payment Mode{" "}
+          Payment Mode
         </CardHeader>
         <CardContent className="bg-white py-2 px-4 rounded-b-xl overflow-auto space-y-4">
           <FormField
@@ -188,7 +193,9 @@ export function PaymentModeForm() {
               name={`paymentMode.${name}`}
               render={({ field }) => (
                 <FormItem className="flex flex-col md:flex-row gap-2">
-                  <FormLabel className="font-semibold w-full md:w-1/3">{label}</FormLabel>
+                  <FormLabel className="font-semibold w-full md:w-1/3">
+                    {label}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       {...(name.includes("Amt") ? { type: "number" } : {})}

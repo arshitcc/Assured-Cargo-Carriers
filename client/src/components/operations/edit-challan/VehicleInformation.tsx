@@ -1,44 +1,70 @@
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
 import { useFormContext } from "react-hook-form";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-function VehicleOwnerAndDriverInformation() {
+function VehicleInformation() {
   const { control } = useFormContext();
   return (
     <Card className="w-full col-span-3 md:col-span-1 p-0 gap-0 rounded-b-sm">
       <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
-        Vehichle Owner and Driver Information
+        Vehichle Information
       </CardHeader>
       <CardContent className="space-y-2 p-4">
         <FormField
+          name="vehicleInfo.vehicleType"
           control={control}
-          name="vehicleOwnerDriverInfo.ownerName"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
-              <FormLabel className="font-semibold w-full md:w-1/3">
-                Owner Name
+              <FormLabel className="w-full md:w-1/3 font-semibold">
+                Vehicle Type
               </FormLabel>
-              <FormControl>
-                <Input className="w-full md:w-2/3" placeholder="Owner Name" {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue="Market">
+                <FormControl>
+                  <SelectTrigger className="w-full md:w-2/3">
+                    <SelectValue placeholder="Select Vehicle Type" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Market" className="hover:bg-gray-100">
+                    Market
+                  </SelectItem>
+                  <SelectItem
+                    value="Company Vehicle"
+                    className="hover:bg-gray-100"
+                  >
+                    Company Vehicle
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </FormItem>
           )}
         />
 
         <FormField
           control={control}
-          name="vehicleOwnerDriverInfo.ownerMobile"
+          name="vehicleInfo.vehicleRegistrationNumber"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold w-full md:w-1/3">
-                Owner Mobile
+                Vehicle Registration Number
               </FormLabel>
               <FormControl>
                 <Input
                   className="w-full md:w-2/3"
-                  placeholder="Owner Mobile"
+                  placeholder="Vehicle Registration Number"
                   {...field}
                 />
               </FormControl>
@@ -48,16 +74,16 @@ function VehicleOwnerAndDriverInformation() {
 
         <FormField
           control={control}
-          name="vehicleOwnerDriverInfo.ownerPan"
+          name="vehicleInfo.engineNumber"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold w-full md:w-1/3">
-                Owner PAN
+                Engine Number
               </FormLabel>
               <FormControl>
                 <Input
                   className="w-full md:w-2/3"
-                  placeholder="Owner PAN"
+                  placeholder="Engine Number"
                   {...field}
                 />
               </FormControl>
@@ -67,69 +93,88 @@ function VehicleOwnerAndDriverInformation() {
 
         <FormField
           control={control}
-          name="vehicleOwnerDriverInfo.ownerAddress"
+          name="vehicleInfo.chasisNumber"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold w-full md:w-1/3">
-                Owner Address
-              </FormLabel>
-              <FormControl>
-                <Textarea
-                  className="w-full md:w-2/3"
-                  placeholder="Owner Address"
-                  {...field}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={control}
-          name="vehicleOwnerDriverInfo.driverName"
-          render={({ field }) => (
-            <FormItem className="flex flex-col md:flex-row gap-2">
-              <FormLabel className="font-semibold w-full md:w-1/3">
-                Driver Name
-              </FormLabel>
-              <FormControl>
-                <Input className="w-full md:w-2/3" placeholder="Driver Name" {...field} />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={control}
-          name="vehicleOwnerDriverInfo.driverMobile"
-          render={({ field }) => (
-            <FormItem className="flex flex-col md:flex-row gap-2">
-              <FormLabel className="font-semibold w-full md:w-1/3">
-                Driver Mobile
+                Chasis Number
               </FormLabel>
               <FormControl>
                 <Input
                   className="w-full md:w-2/3"
-                  placeholder="Driver Mobile"
+                  placeholder="Chasis Number"
                   {...field}
                 />
               </FormControl>
             </FormItem>
           )}
         />
-
         <FormField
           control={control}
-          name="vehicleOwnerDriverInfo.driverLicenseNumber"
+          name="vehicleInfo.make"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold w-full md:w-1/3">
-                Driver License Number
+                Make
               </FormLabel>
               <FormControl>
                 <Input
                   className="w-full md:w-2/3"
-                  placeholder="Driver License Number"
+                  placeholder="Make"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="vehicleInfo.capacity"
+          render={({ field }) => (
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
+                Capacity
+              </FormLabel>
+              <FormControl>
+                <Input
+                  className="w-full md:w-2/3"
+                  placeholder="Capacity"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="vehicleInfo.permitNumber"
+          render={({ field }) => (
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
+                Permit Number
+              </FormLabel>
+              <FormControl>
+                <Input
+                  className="w-full md:w-2/3"
+                  placeholder="Permit Number"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="vehicleInfo.insuranceNumber"
+          render={({ field }) => (
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full md:w-1/3">
+                Insurance Number
+              </FormLabel>
+              <FormControl>
+                <Input
+                  className="w-full md:w-2/3"
+                  placeholder="Insurance Number"
                   {...field}
                 />
               </FormControl>
@@ -139,16 +184,16 @@ function VehicleOwnerAndDriverInformation() {
 
         <FormField
           control={control}
-          name="vehicleOwnerDriverInfo.driverAddress"
+          name="vehicleInfo.insuranceCompany"
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row gap-2">
               <FormLabel className="font-semibold w-full md:w-1/3">
-                Driver Address
+                Insurance Company
               </FormLabel>
               <FormControl>
-                <Textarea
+                <Input
                   className="w-full md:w-2/3"
-                  placeholder="Driver Address"
+                  placeholder="Insurance Company"
                   {...field}
                 />
               </FormControl>
@@ -160,4 +205,4 @@ function VehicleOwnerAndDriverInformation() {
   );
 }
 
-export default VehicleOwnerAndDriverInformation;
+export default VehicleInformation;
