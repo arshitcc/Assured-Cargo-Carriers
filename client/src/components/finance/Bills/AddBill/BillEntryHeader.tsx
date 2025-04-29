@@ -1,0 +1,218 @@
+import { useFormContext } from "react-hook-form";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calendar";
+import { CalendarIcon } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+
+function BillEntryHeader() {
+  const { control } = useFormContext();
+
+  return (
+    <Card className="p-0 gap-0 rounded-b-sm">
+      <CardHeader className="font-semibold p-3 bg-[#3279b7] text-white rounded-t-sm">
+        Bill Entry
+      </CardHeader>
+      <CardContent className="p-3 flex flex-col md:flex-wrap md:flex-row gap-4 justify-around">
+        <FormField
+          name="branch"
+          control={control}
+          render={({ field }) => (
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full">
+                Branch
+              </FormLabel>
+              <Select onValueChange={field.onChange}>
+                <FormControl>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select Branch" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Pune" className="hover:bg-gray-100">
+                    Pune
+                  </SelectItem>
+                  <SelectItem value="Surat" className="hover:bg-gray-100">
+                    Surat
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="billNumber"
+          control={control}
+          render={({ field }) => (
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold">Bill No</FormLabel>
+              <FormControl>
+                <Input
+                  className="w-full md:w-2/3 disabled:bg-gray-300 font-semibold"
+                  placeholder="Autogenerate"
+                  disabled
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          name="date"
+          control={control}
+          render={({ field }) => {
+            const [open, setOpen] = useState(false);
+            return (
+              <FormItem className="flex flex-col md:flex-row gap-2">
+                <FormLabel className="font-semibold">Date</FormLabel>
+                <Popover open={open} onOpenChange={setOpen}>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "w-full md:w-[240px] pl-3 text-left font-normal",
+                          !field.value && "text-muted-foreground"
+                        )}
+                        onClick={() => setOpen((prev) => !prev)}
+                      >
+                        {field.value ? (
+                          format(field.value, "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-full md:w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    className="w-full md:w-auto p-0"
+                    align="start"
+                  >
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={(date) => {
+                        field.onChange(date);
+                        setOpen(false);
+                      }}
+                      disabled={(date) =>
+                        date < new Date() || date < new Date("1900-01-01")
+                      }
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+              </FormItem>
+            );
+          }}
+        />
+
+        <FormField
+          name="type"
+          control={control}
+          render={({ field }) => (
+            <FormItem className="flex flex-col md:flex-row gap-2">
+              <FormLabel className="font-semibold w-full">
+                Type
+              </FormLabel>
+              <Select onValueChange={field.onChange}>
+                <FormControl>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="FRT" className="hover:bg-gray-100">
+                    FRT
+                  </SelectItem>
+                  <SelectItem
+                    value="Miscellaneous"
+                    className="hover:bg-gray-100"
+                  >
+                    Miscellaneous
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          name="submissionDate"
+          control={control}
+          render={({ field }) => {
+            const [open, setOpen] = useState(false);
+            return (
+              <FormItem className="flex flex-col md:flex-row gap-2">
+                <FormLabel className="font-semibold">Submission Date</FormLabel>
+                <Popover open={open} onOpenChange={setOpen}>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "w-full md:w-[240px] pl-3 text-left font-normal",
+                          !field.value && "text-muted-foreground"
+                        )}
+                        onClick={() => setOpen((prev) => !prev)}
+                      >
+                        {field.value ? (
+                          format(field.value, "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-full md:w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    className="w-full md:w-auto p-0"
+                    align="start"
+                  >
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={(date) => {
+                        field.onChange(date);
+                        setOpen(false);
+                      }}
+                      disabled={(date) =>
+                        date < new Date() || date < new Date("1900-01-01")
+                      }
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+              </FormItem>
+            );
+          }}
+        />
+      </CardContent>
+    </Card>
+  );
+}
+
+export default BillEntryHeader;

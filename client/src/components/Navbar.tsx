@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Loader2, MenuIcon, SettingsIcon } from "lucide-react";
+import { BriefcaseBusinessIcon, Loader2, SettingsIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import {
@@ -13,9 +13,10 @@ import {
 } from "./ui/navigation-menu";
 import React from "react";
 import { cn } from "@/lib/utils";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import MobileNavbar from "./MobileNavbar";
 
 const Navbar = () => {
-
   const operations = [
     {
       name: "LHV Entry",
@@ -37,6 +38,54 @@ const Navbar = () => {
       slug: "/search-challans",
       active: true,
     },
+  ];
+
+  const financeOperations = [
+    {
+      name: "Bills",
+      slug: "/search-bills",
+      active: true,
+    },
+    {
+      name: "Bill Entry",
+      slug: "/bill-entry",
+      active: true,
+    },
+    {
+      name : "Bill Submission",
+      slug : "/bill-submission",
+      active : true
+    },
+    {
+      name : "Money Receipt",
+      slug : "/money-receipt",
+      active : true
+    },
+    {
+      name : "LHV Voucher",
+      slug : "/money-receipt",
+      active : true,
+    },
+    {
+      name : "MMC Voucher",
+      slug : "/money-receipt",
+      active : true
+    },
+    {
+      name : "General Voucher",
+      slug : "/money-receipt",
+      active : true
+    },
+    {
+      name : "IBT",
+      slug : "/money-receipt",
+      active : true
+    },
+    {
+      name : "CBS",
+      slug : "/money-receipt",
+      active : true
+    }
   ];
 
   const navigate = useNavigate();
@@ -68,31 +117,52 @@ const Navbar = () => {
           </span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
+          <Link to={"/home"} className={navigationMenuTriggerStyle() + " font-semibold"}>
+              Home
+          </Link>
+          <Link to={"/about"} className={navigationMenuTriggerStyle() + " font-semibold"}>
+              About
+          </Link>
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link to={"/home"} className={navigationMenuTriggerStyle()}>
-                  Home
-                </Link>
+                
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to={"/about"} className={navigationMenuTriggerStyle()}>
-                  About
-                </Link>
+                
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger>
-                  <SettingsIcon className="w-5 h-5 mr-2" /> Opeartions
+                  <SettingsIcon className="w-5 h-5 mr-2 font-semibold" /> Opeartions
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="flex flex-col w-[150px]">
+                  <ul className="flex flex-col gap-y-[10px] w-[150px]">
                     {operations.map((operation) => (
-                      <Link
-                        key={operation.name}
+                      <li key={operation.name}>
+                        <Link
                         to={operation.slug}
-                        className={navigationMenuTriggerStyle()}
+                        className="w-full hover:bg-gray-100 cursor-pointer px-2 py-1.5 text-sm font-[500] rounded-sm"
                       >
                         {operation.name}
+                      </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>
+                  <BriefcaseBusinessIcon className="w-5 h-5 mr-2 font-semibold" /> Finance
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="w-[300px] grid grid-cols-2">
+                    {financeOperations.map((financeOperation) => (
+                      <Link
+                        key={financeOperation.name}
+                        to={financeOperation.slug}
+                        className="w-full hover:bg-gray-100 cursor-pointer px-2 py-1.5 text-sm font-[500] rounded-sm"
+                      >
+                        {financeOperation.name}
                       </Link>
                     ))}
                   </ul>
@@ -121,7 +191,9 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex md:hidden">
-          <MenuIcon/>
+          <SidebarProvider>
+            <MobileNavbar/>
+          </SidebarProvider>
         </div>
       </div>
     </div>
